@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   
-  <title>Dominion Consult</title>
+  <title>Acid Consult</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
@@ -34,7 +34,7 @@
         <span class="icon-bar"></span>                        
       </button>
       
-      <a class="navbar-brand" href="#myPage">DominionConsult</a>
+      <a class="navbar-brand" href="#myPage">AcidConsult</a>
       
     </div>
                 
@@ -51,7 +51,7 @@
 </nav>
 
 <div class="jumbotron text-center">
-  <h1>DominionConsult</h1> 
+  <h1>AcidConsult</h1> 
   <p>We specialize in consultancy services</p> 
   {{--<form class="form-inline">
     <div class="input-group">
@@ -67,9 +67,14 @@
 <div id="about" class="container-fluid">
   <div class="row">
     <div class="col-sm-8">
-      <h2>About Company</h2><br>
-      <h4 class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-      <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <h2>About Organization</h2><br>
+      <h4 class="text-justify">ASSOCIATION FOR COMMUNITY
+INVOLMEMENT IN DEVELOPMENT (ACID)</h4><br>
+      <p class="text-justify">ACID is a non-governmental organization experienced in programme design
+and evaluation. It has worked with World Vision Tanzania in various ADPs including Dar Urban, Nyasa,
+Magamba Lweru and Mpwapwa. The organization has also experience in working with other institutions
+including Economic and Social Research Foundation, Ministry of Health, Ministry of Agriculture, Ministry of
+Education, Tanzania private sector Foundation, CAMFED and HIVOS.</p>
       <br><a class="btn btn-default btn-lg" id="#getInTouch" href="#contact">Get in Touch</a>
     </div>
     <div class="col-sm-4">
