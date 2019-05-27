@@ -89,10 +89,9 @@ Education, Tanzania private sector Foundation, CAMFED and HIVOS.</p>
       <span class="glyphicon glyphicon-globe logo slideanim"></span>
     </div>
     <div class="col-sm-8">
-      <h2>Our Values</h2><br>
-      <h4 class="text-justify"><strong>MISSION:</strong> Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-      <p class="text-justify"><strong>VISION:</strong> Our vision Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <h2>Our Values</h2>
+      <h4 class="text-justify"><strong>MISSION:</strong> Solving development challenges through collaboration  and integration of skills, professions, talents and gifts in research, trainings and innovations.</h4>
+      <p class="text-justify"><strong>VISION:</strong> Connected and prospered global population.</p>
     </div>
   </div>
 </div>
@@ -307,8 +306,8 @@ Education, Tanzania private sector Foundation, CAMFED and HIVOS.</p>
   <p>
     <h4><i>Stay connected with us</i></h4>
     <a href="#" target="_blank" data-toggle="tooltip" title="Like our Facebook page"><i class="fa fa-facebook fa-2x"></i></a>
-    <a href="#" target="_blank"><i class="fa fa-instagram fa-2x text-danger" data-toggle="tooltip" title="Follow us on Instagram"></i></a>
-    <a href="#" rel="publisher" target="_blank"><i class="fa fa-google-plus fa-2x text-danger" data-toggle="tooltip" title="Follow our Google+ page"></i></a>
+    <a href="#" target="_blank"><i class="fa fa-instagram fa-2x text-maroon" data-toggle="tooltip" title="Follow us on Instagram"></i></a>
+    <a href="#" rel="publisher" target="_blank"><i class="fa fa-google-plus fa-2x text-maroon" data-toggle="tooltip" title="Follow our Google+ page"></i></a>
     <a href="#" target="_blank"><i class="fa fa-twitter fa-2x" data-toggle="tooltip" title="Follow us on Twitter"></i></a>
   </p>
   <div class="col-sm-12 m-t-30">
