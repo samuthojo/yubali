@@ -4,8 +4,6 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\Schema;
-use App\Announcement;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,9 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-      View::share('announcements', Announcement::latest('created_at')->get());
-      
-      Schema::defaultStringLength(191);
+
     }
 
     /**
