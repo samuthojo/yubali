@@ -34,7 +34,7 @@
         <span class="icon-bar"></span>                        
       </button>
       
-      <a class="navbar-brand" href="#myPage">AcidConsult</a>
+      <a class="navbar-brand" href="#myPage">ACID</a>
       
     </div>
                 
@@ -51,16 +51,8 @@
 </nav>
 
 <div class="jumbotron text-center">
-  <h1>AcidConsult</h1> 
-  <p>We specialize in consultancy services</p> 
-  {{--<form class="form-inline">
-    <div class="input-group">
-      <input type="email" class="form-control" size="50" placeholder="Email Address" required>
-      <div class="input-group-btn">
-        <button type="button" class="btn btn-danger">Subscribe</button>
-      </div>
-    </div>
-  </form>--}}
+  <h1>Acid</h1> 
+  <p>We specialize in development innovations with sustainability and gender perspective</p>
 </div>
 
 <!-- Container (About Section) -->
@@ -68,7 +60,7 @@
   <div class="row">
     <div class="col-sm-8">
       <h2>About Organization</h2><br>
-      <h4 class="text-justify">ASSOCIATION FOR COMMUNITY
+      <h4 class="">ASSOCIATION FOR COMMUNITY
 INVOLMEMENT IN DEVELOPMENT (ACID)</h4><br>
       <p class="text-justify">ACID is a non-governmental organization experienced in programme design
 and evaluation. It has worked with World Vision Tanzania in various ADPs including Dar Urban, Nyasa,
@@ -103,24 +95,6 @@ Education, Tanzania private sector Foundation, CAMFED and HIVOS.</p>
   <br>
   <div class="row slideanim">
     <div class="col-sm-4">
-      <span class="fa fa-search logo-small"></span>
-      <h4>RESEARCH</h4>
-      <p>Researching and collaborations in research</p>
-    </div>
-    <div class="col-sm-4">
-      <span class="fa fa-file-pdf-o logo-small"></span>
-      <h4>STRUCTURING PROPOSALS</h4>
-      <p>Organizing research ideas to well structured proposals</p>
-    </div>
-    <div class="col-sm-4">
-      <span class="fa fa-book logo-small"></span>
-      <h4>PROOF-READING, REVIEW AND EDITING</h4>
-      <p>Proof reading, review and  editing of reports, papers and books</p>
-    </div>
-  </div>
-  <br><br>
-  <div class="row slideanim">
-    <div class="col-sm-4">
       <span class="fa fa-handshake-o logo-small"></span>
       <h4>TRAINING AND MENTORING</h4>
       <p>Training, mentoring, coaching and incubating innovations for sustainable development</p>
@@ -131,40 +105,34 @@ Education, Tanzania private sector Foundation, CAMFED and HIVOS.</p>
       <p>Active promotion of agriculture as business</p>
     </div>
     <div class="col-sm-4">
+      <span class="fa fa-search logo-small"></span>
+      <h4>RESEARCH</h4>
+      <p>Researching and collaborations in research</p>
+    </div>
+  </div>
+  <br><br>
+  <div class="row slideanim">
+    <div class="col-sm-4">
+      <span class="fa fa-file-pdf-o logo-small"></span>
+      <h4>STRUCTURING PROPOSALS</h4>
+      <p>Organizing research ideas to well structured proposals</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="fa fa-book logo-small"></span>
+      <h4>PROOF-READING, REVIEW AND EDITING</h4>
+      <p>Proof reading, review and  editing of reports, papers and books</p>
+    </div>
+    <div class="col-sm-4">
       <span class="fa fa-desktop logo-small"></span>
       <h4 style="color:#303030;">ICT SERVICES</h4>
       <p>ICT advice and support to facilitate efficient operations of companies, businesses and organizations</p>
     </div>
   </div>
+  
 </div>
 
 <!-- Container (Portfolio Section) -->
 <div id="portfolio" class="container-fluid text-center bg-grey">
-  {{--<h2>Portfolio</h2><br>
-  <h4>Organizations we have worked with</h4>
-  <div class="row text-center slideanim">
-    <div class="col-sm-4">
-      <div class="thumbnail">
-        <img src="{{asset('images/paris.jpg')}}" alt="Paris" width="400" height="300">
-        <p><strong>Paris</strong></p>
-        <p>Yes, we built Paris</p>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="thumbnail">
-        <img src="{{asset('images/newyork.jpg')}}" alt="New York" width="400" height="300">
-        <p><strong>New York</strong></p>
-        <p>We built New York</p>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="thumbnail">
-        <img src="{{asset('images/sanfran.jpg')}}" alt="San Francisco" width="400" height="300">
-        <p><strong>San Francisco</strong></p>
-        <p>Yes, San Fran is ours</p>
-      </div>
-    </div>
-  </div><br>--}}
   
   <h2>What our customers say</h2>
   <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
@@ -199,73 +167,6 @@ Education, Tanzania private sector Foundation, CAMFED and HIVOS.</p>
     </a>
   </div>
 </div>
-
-<!-- Container (Pricing Section) -->
-{{--<div id="pricing" class="container-fluid">
-  <div class="text-center">
-    <h2>Pricing</h2>
-    <h4>Choose a payment plan that works for you</h4>
-  </div>
-  <div class="row slideanim">
-    <div class="col-sm-4 col-xs-12">
-      <div class="panel panel-default text-center">
-        <div class="panel-heading">
-          <h1>Basic</h1>
-        </div>
-        <div class="panel-body">
-          <p><strong>20</strong> Lorem</p>
-          <p><strong>15</strong> Ipsum</p>
-          <p><strong>5</strong> Dolor</p>
-          <p><strong>2</strong> Sit</p>
-          <p><strong>Endless</strong> Amet</p>
-        </div>
-        <div class="panel-footer">
-          <h3>$19</h3>
-          <h4>per month</h4>
-          <button class="btn btn-lg">Sign Up</button>
-        </div>
-      </div>      
-    </div>     
-    <div class="col-sm-4 col-xs-12">
-      <div class="panel panel-default text-center">
-        <div class="panel-heading">
-          <h1>Pro</h1>
-        </div>
-        <div class="panel-body">
-          <p><strong>50</strong> Lorem</p>
-          <p><strong>25</strong> Ipsum</p>
-          <p><strong>10</strong> Dolor</p>
-          <p><strong>5</strong> Sit</p>
-          <p><strong>Endless</strong> Amet</p>
-        </div>
-        <div class="panel-footer">
-          <h3>$29</h3>
-          <h4>per month</h4>
-          <button class="btn btn-lg">Sign Up</button>
-        </div>
-      </div>      
-    </div>       
-    <div class="col-sm-4 col-xs-12">
-      <div class="panel panel-default text-center">
-        <div class="panel-heading">
-          <h1>Premium</h1>
-        </div>
-        <div class="panel-body">
-          <p><strong>100</strong> Lorem</p>
-          <p><strong>50</strong> Ipsum</p>
-          <p><strong>25</strong> Dolor</p>
-          <p><strong>10</strong> Sit</p>
-          <p><strong>Endless</strong> Amet</p>
-        </div>
-        <div class="panel-footer">
-          <h3>$49</h3>
-          <h4>per month</h4>
-          <button class="btn btn-lg">Sign Up</button>
-        </div>
-      </div>      
-    </div>    
-  </div>
-</div>--}}
 
 <!-- Container (Contact Section) -->
 <div id="contact" class="container-fluid">
