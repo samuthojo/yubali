@@ -187,3 +187,14 @@ footer a {
 .m-t-30 {
   margin-top: 30px;
 }
+.founder-photo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.founder-photo {
+  /*width: 100px;
+  height: 100px;*/
+  object-fit: contain;
+  border-radius: 50%;
+}

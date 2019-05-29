@@ -42,6 +42,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#about">ABOUT</a></li>
         <li><a href="#services">SERVICES</a></li>
+        <li><a href="#founder">FOUNDER</a></li>
         <li><a href="#portfolio">PORTFOLIO</a></li>
         <li><a href="#contact">CONTACT</a></li>
       </ul>
@@ -111,6 +112,17 @@
       </h4>
       <h4 class="text-justify"><strong>MISSION:</strong> Solving development challenges through collaboration  and integration of skills, professions, talents and gifts in research, trainings and innovations.</h4>
       <h4 class="text-justify"><strong>VISION:</strong> Connected and prospered global population.</h4>
+      <h4 class="text-justify">
+        <strong>ACTIVITIES:</strong>
+        Design and implementation of community development programmes, 
+        Analysis and evaluation of development programs/projects with gender lens, 
+        Gender planning, budgeting, mainstreaming and Gender based leadership, 
+        Provision of trainings on; Project Management, Entrepreneurship and Job creation, 
+        Conducting research and dissemination of information, 
+        Building community capacities in facilitation Skills, Training of Trainers (TOT)  and Entrepreneurship, 
+        Agricultural technology transfer and extension of agricultural education, 
+        Fighting HIV/AIDS through strengthening of families, provision of education on; Family Life, Reproduction Health and Life Skills. 
+      </h4>
     </div>
   </div>
 </div>
@@ -158,8 +170,46 @@
   
 </div>
 
+<!-- Container (Founder Section) -->
+<div id="founder" class="container-fluid bg-grey">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="founder-photo-container">
+        <img 
+          class="founder-photo"
+          src="{{asset('images/founder.jpg')}}" alt="Founder\'s Photo">
+        <div>Dr. Patricia Mwesiga Lyatuu</div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <h2>About Founder</h2>
+      <p class="text-justify">
+        Dr. Patricia Mwesiga Lyatuu is a seasoned Community Development professional with a wide experience in 
+        undertaking complex, multi stakeholder assessments for the design, formulation, implementation, 
+        monitoring and evaluation of internationally funded programmes such as evaluation of Rural Multi-Sectoral 
+        Area Development Programmes; agricultural/horticultural value chains analysis; Women Empowerment 
+        programmes; food security; Nutrition; livelihood strategies and well-Being. Others are Trainings design , 
+        Public Private Partnerships, mentorship and coaching. Patricia has more than 10 years work experience in 
+        research and academic work, where she has completed more than 10 designs, monitoring and evaluation as 
+        well as institutional assessment/scoping and baseline assignments for a variety of organizations including 
+        international NGO’s such as HIVOS, Campaign for Girls Education (CAMFED), USAID-feed the feature 
+        programme-Africa Lead II, World Vision International in Tanzania, and Africa Capacity Building Fund. She has 
+        also served for local NGOs and CSOs such as Association for Community Involvement in Development 
+        (ACID), Tanzania Cultural Development Fund, Economic and Social Research Foundation (ESRF) and 
+        Research for Poverty Alleviation (REPOA). Apart from technical expertise, Patricia has demonstrated team 
+        leadership and ability to integrate cross cutting issues (HIV, gender, climate change and related 
+        environmental issues) in these assignments. She holds a PhD in Development Studies majoring on land 
+        access and livelihoods from Sokoine University of Agriculture, Tanzania; a MSc. In Community Economic 
+        Development major International community Development of Southern new Hampshire University-USA; a 
+        Post graduate diploma in Policy Analysis for Socio-economic Security and Development of ISS-Hague 
+        Netherlands and a BSc. in Home Economics and Human Nutrition from SUA- Tanzania.
+      </p>
+    </div>
+  </div>
+</div>
+
 <!-- Container (Portfolio Section) -->
-<div id="portfolio" class="container-fluid text-center bg-grey">
+<div id="portfolio" class="container-fluid text-center">
   
   <h2>What our customers say</h2>
   <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
@@ -196,7 +246,7 @@
 </div>
 
 <!-- Container (Contact Section) -->
-<div id="contact" class="container-fluid">
+<div id="contact" class="container-fluid bg-grey">
   <h2 class="text-center">CONTACT</h2>
   <div class="row">
     <div class="col-sm-5">
@@ -227,7 +277,7 @@
 <!-- Image of location/map -->
 {{--<img src="/w3images/map.jpg" class="w3-image w3-greyscale-min" style="width:100%">--}}
 
-<footer class="container-fluid text-center bg-grey">
+<footer class="container-fluid text-center">
   <a href="#myPage" title="To Top">
     <span class="glyphicon glyphicon-chevron-up"></span>
   </a>
