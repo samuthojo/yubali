@@ -229,7 +229,7 @@
         <h4>"My research wouldn't have gone without you!"<br><span>Blessing Lyatuu, MUCE</span></h4>
       </div>
       <div class="item">
-        <h4>"This company is the best. I am grateful!"<br><span>Grace Thomas, Author</span></h4>
+        <h4>"This organization is the best. I am grateful!"<br><span>Grace Thomas, Author</span></h4>
       </div>
     </div>
 
