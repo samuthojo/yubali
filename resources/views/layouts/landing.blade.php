@@ -52,7 +52,8 @@
 
 <div class="jumbotron text-center">
   <h1>Acid</h1> 
-  <p>We specialize in development innovations with sustainability and gender perspective</p>
+  <p>We specialize in development innovations with gender 
+    and sustainability perspective.</p>
 </div>
 
 <!-- Container (About Section) -->
@@ -60,14 +61,34 @@
   <div class="row">
     <div class="col-sm-8">
       <h2>About Organization</h2><br>
-      <h4 class="">ASSOCIATION FOR COMMUNITY
-INVOLMEMENT IN DEVELOPMENT (ACID)</h4><br>
-      <p class="text-justify">ACID is a non-governmental organization experienced in programme design
-and evaluation. It has worked with World Vision Tanzania in various ADPs including Dar Urban, Nyasa,
-Magamba Lweru and Mpwapwa. The organization has also experience in working with other institutions
-including Economic and Social Research Foundation, Ministry of Health, Ministry of Agriculture, Ministry of
-Education, Tanzania private sector Foundation, CAMFED and HIVOS.</p>
-      <br><a class="btn btn-default btn-lg" id="#getInTouch" href="#contact">Get in Touch</a>
+      <h4>ASSOCIATION FOR COMMUNITY INVOLMEMENT IN DEVELOPMENT (ACID)</h4>
+      <br>
+      <p class="text-justify">
+        ACID is a non-governmental organization experienced in 
+        programme design and evaluation. It is dedicated in 
+        solving development challenges through collaboration and 
+        integration of skills, professions, talents and other 
+        resources useful in research, trainings and innovations. 
+        It has worked with World Vision Tanzania in various ADPs 
+        including Dar Urban, Nyasa, Magamba Lweru and Mpwapwa. 
+        The organization has also experience in working with other 
+        institutions including Economic and Social Research Foundation,
+        Ministry of Health, Ministry of Agriculture, Ministry of Education, 
+        Tanzania private sector Foundation, CAMFED and HIVOS.
+      </p>
+      <p class="text-justify">
+        ACID was started in January 2003 as a non-governmental 
+        organization and in September 2006 it was registered 
+        with registration number 02NGO/1710. ACID strives to 
+        engage communities in fighting all forms of poverty 
+        with gender and sustainability perspective. It also 
+        offers consultancies in development aspects under 
+        its business license number B 3137703 and TIN number 105-140-827.
+      </p>
+      <br>
+      <a class="btn btn-default btn-lg" id="#getInTouch" href="#contact">
+        Get in Touch
+      </a>
     </div>
     <div class="col-sm-4">
       <span class="glyphicon glyphicon-signal logo"></span>
@@ -82,8 +103,14 @@ Education, Tanzania private sector Foundation, CAMFED and HIVOS.</p>
     </div>
     <div class="col-sm-8">
       <h2>Our Values</h2>
+      <h4 class="text-justify">
+        Quality and timely service delivery, Positive impact to the poor, 
+        People centered approach to development, Information sharing and 
+        team work (multidisciplinary approach to poverty reduction), 
+        Inclusive growth, Gender sensitivity.
+      </h4>
       <h4 class="text-justify"><strong>MISSION:</strong> Solving development challenges through collaboration  and integration of skills, professions, talents and gifts in research, trainings and innovations.</h4>
-      <p class="text-justify"><strong>VISION:</strong> Connected and prospered global population.</p>
+      <h4 class="text-justify"><strong>VISION:</strong> Connected and prospered global population.</h4>
     </div>
   </div>
 </div>
