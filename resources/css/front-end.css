@@ -1,0 +1,22 @@
+.fakeimg {
+  height: 200px;
+  background: #aaa;
+}
+/* Make the image fully responsive */
+.carousel-inner img {
+  width: 100%;
+  object-fit: contain;
+}
+.gallery-pic {
+  width: 100%;
+}
+iframe {
+  /*max-width: 400px;*/
+  width: 100%;
+  min-height: 300px;
+}
+.saccos-link {
+  padding-left: 0;
+  padding-right: 0;
+}
+

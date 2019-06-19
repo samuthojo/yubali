@@ -9,4 +9,9 @@
 @import "node_modules/font-awesome/scss/font-awesome";
 
 // Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+@import '~bootstrap/scss/bootstrap';
+
+// CoreUI
+@import '~@coreui/coreui/scss/coreui';
+
+@import '~@coreui/icons/scss/coreui-icons';
