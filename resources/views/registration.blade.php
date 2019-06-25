@@ -30,7 +30,7 @@
      <div class="form-group col-md-4">
        <label style="font-weight: bold;" for="dob">Date Of Birth:</label>
        <input type="text" name="birthdate" class="form-control" id="dob"
-        placeholder="eg. 22/03/1990" value="{{ old('birthdate') }}">
+        placeholder="eg. 22-03-1990" value="{{ old('birthdate') }}">
      </div>
      <div class="form-group col-md-4">
        <label style="font-weight: bold;" for="gender">Gender:</label>
@@ -68,9 +68,9 @@
         value="{{ old('children_number') }}">
      </div>
      <div class="form-group col-md-4">
-       <label style="font-weight: bold;" for="dob">Residency/ Physical Address:</label>
-       <input type="text" name="birthdate" class="form-control" id="dob"
-        placeholder="eg. 22/03/1990" value="{{ old('birthdate') }}">
+       <label style="font-weight: bold;" for="residence">Residence/ Physical Address:</label>
+       <input type="text" name="physical_address" class="form-control" id="residence"
+        placeholder="eg. Tabata Segerea, Dar es Salaam" value="{{ old('physical_address') }}">
      </div>
    </div>
    <div class="row">
@@ -115,7 +115,16 @@
         placeholder="eg. Mbezi Beach, Dar es Salaam" value="{{ old('church_location') }}">
      </div>
    </div>
-   <button type="submit" class="btn btn-success mb-2 float-right">Submit</button>
+   <div class="row">
+     <div class="form-group col-12">
+       <label style="font-weight: bold;" for="biography">Biography:</label>
+       <textarea name="biography" class="form-control" id="biography"
+        placeholder="eg. Short Biography" 
+        value="{{ old('biography') }}"
+        rows="3"></textarea>
+     </div>
+   </div>
+   <button type="submit" class="btn btn-brown mb-2 float-right">Submit</button>
   </form>
   
 </div>

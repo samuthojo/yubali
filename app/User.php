@@ -5,11 +5,13 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use App\Role;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
-  use Notifiable;
+  use Notifiable, HasMediaTrait;
 
   /**
    * The attributes that are mass assignable.
@@ -17,7 +19,11 @@ class User extends Authenticatable
    * @var array
    */
   protected $fillable = [
-    'firstname', 'middlename', 'lastname', 'email',
+    'firstname', 'middlename', 'lastname', 
+    'birthdate', 'gender', 'specialization',
+    'marital_status', 'children_number', 'physical_address',
+    'mobile', 'email', 'salvation_status', 'denomination',
+    'church_name', 'church_location', 'biography',
     'password',
   ];
 
@@ -43,4 +49,12 @@ class User extends Authenticatable
   {
     return $this->belongsToMany(Role::class);
   }
+  
+  public function getImageUrlAttribute() {
+    if($this->hasMedia('user_pictures')) {
+      return $this->getFirstMedia('user_pictures')->getFullUrl();
+    }
+    return null;
+  }
+  
 }

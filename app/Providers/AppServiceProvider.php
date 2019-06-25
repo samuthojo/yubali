@@ -24,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+      //register helpers
+       require_once __DIR__ . '/../Helpers/strings.php';
     }
 }

@@ -57,7 +57,7 @@
        <textarea name="content" class="form-control" id="content" rows="4"
          placeholder="Tell us ..."></textarea>
      </div>
-     <button type="submit" class="btn btn-success mb-2 float-right">Submit</button>
+     <button type="submit" class="btn btn-brown mb-2 float-right">Submit</button>
     </form> 
   </div>
   

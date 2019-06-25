@@ -1,22 +1,25 @@
-.fakeimg {
-  height: 200px;
-  background: #aaa;
+.carousel {
+  width: 65%;
 }
-/* Make the image fully responsive */
 .carousel-inner img {
-  width: 100%;
+  max-width: 100%;
   object-fit: contain;
 }
-.gallery-pic {
-  width: 100%;
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-image: url('/images/back-body.png');
 }
-iframe {
-  /*max-width: 400px;*/
-  width: 100%;
-  min-height: 300px;
+.container {
+  flex-grow: 1
 }
-.saccos-link {
-  padding-left: 0;
-  padding-right: 0;
+nav ul > li.active {
+  border-bottom: thin solid #a94442;
 }
-
+.nav-item {
+  padding: 0 18px;
+}
+.text-maroon {
+  color: #a94442;
+}
