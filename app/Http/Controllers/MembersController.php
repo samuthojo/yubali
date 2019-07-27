@@ -37,12 +37,13 @@ class MembersController extends Controller
     $this->validate($request, Booking::rules());
     $instance = $member->bookings()
                       ->whereDate('end_date', '>=', $request->end_date)
+                      ->where('status', 'approved')
                       ->first();
     if ($instance) {
       $errorMessage = 'This member has been booked from ' . 
                       nice_date($instance->start_date) . ' to ' . 
                       nice_date($instance->end_date) .
-                      ' please choose different dates'; 
+                      ' please choose different dates and try again!'; 
       return back()->withErrors(['errorMessage' => $errorMessage])
                   ->withInput();
     } else {
@@ -52,7 +53,10 @@ class MembersController extends Controller
         ]);
       }
       $member->bookings()->create($request->all());
-      $successMessage = 'You have successfully booked ' . fullName($member->firstname, $member->middlename, $member->lastname);
+      $successMessage = 'Your request for ' . 
+                        fullName($member->firstname, $member->middlename,
+                         $member->lastname) .
+                        ' has been received, you will be notified soon!';
       return back()->with('successMessage', $successMessage);
     }
   }
