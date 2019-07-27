@@ -58,9 +58,9 @@
               <a class="nav-link" 
                 href="{{ route('about') }}">ABOUT US</a>
             </li>
-            <li class="nav-item {{ isActiveRoute('register') }}">
+            <li class="nav-item {{ isActiveRoute('apply') }}">
               <a class="nav-link" 
-                href="{{ route('register') }}">REGISTRATION</a>
+                href="{{ route('applications.apply') }}">REGISTRATION</a>
             </li>    
             <li class="nav-item {{ areActiveRoutes(['events.index', 'events.event']) }}">
               <a class="nav-link"

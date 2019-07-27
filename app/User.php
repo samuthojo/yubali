@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use App\Role;
+use App\Booking;
 
 class User extends Authenticatable implements HasMedia
 {
@@ -48,6 +49,11 @@ class User extends Authenticatable implements HasMedia
   public function roles() 
   {
     return $this->belongsToMany(Role::class);
+  }
+  
+  public function bookings()
+  {
+    return $this->hasMany(Booking::class);
   }
   
   public function getImageUrlAttribute() {

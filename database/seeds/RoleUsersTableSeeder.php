@@ -23,13 +23,13 @@ class RoleUsersTableSeeder extends Seeder
         'role_id' => $role_id,
       ]);
       $user_id = $users->firstWhere('firstname', 'Baletse')->id;
-      $role_id = $roles->firstWhere('name', 'director')->id;
+      $role_id = $roles->firstWhere('name', 'executive_director')->id;
       DB::table('role_user')->insert([
         'user_id' => $user_id,
         'role_id' => $role_id,
       ]);
       $user_id = $users->firstWhere('firstname', 'Ley')->id;
-      $role_id = $roles->firstWhere('name', 'secretary')->id;
+      $role_id = $roles->firstWhere('name', 'secretary_general')->id;
       DB::table('role_user')->insert([
         'user_id' => $user_id,
         'role_id' => $role_id,
@@ -41,19 +41,19 @@ class RoleUsersTableSeeder extends Seeder
         'role_id' => $role_id,
       ]);
       $user_id = $users->firstWhere('firstname', 'Emmanuel')->id;
-      $role_id = $roles->firstWhere('name', 'technical')->id;
+      $role_id = $roles->firstWhere('name', 'technical_committee')->id;
       DB::table('role_user')->insert([
         'user_id' => $user_id,
         'role_id' => $role_id,
       ]);
       $user_id = $users->firstWhere('firstname', 'Abdueli')->id;
-      $role_id = $roles->firstWhere('name', 'ministry')->id;
+      $role_id = $roles->firstWhere('name', 'ministry_and_content')->id;
       DB::table('role_user')->insert([
         'user_id' => $user_id,
         'role_id' => $role_id,
       ]);
       $user_id = $users->firstWhere('firstname', 'Adeline')->id;
-      $role_id = $roles->firstWhere('name', 'ethics')->id;
+      $role_id = $roles->firstWhere('name', 'ethics_committee')->id;
       DB::table('role_user')->insert([
         'user_id' => $user_id,
         'role_id' => $role_id,

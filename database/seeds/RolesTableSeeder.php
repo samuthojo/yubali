@@ -23,27 +23,27 @@ class RolesTableSeeder extends Seeder
       ]);
       
       Role::create([
-        'name' => 'director',
-        'description' => 'Director General',
+        'name' => 'executive_director',
+        'description' => 'Executive Director', 
       ]);
       
       Role::create([
-        'name' => 'secretary',
+        'name' => 'secretary_general',
         'description' => 'Secretary General',
       ]);
       
       Role::create([
-        'name' => 'technical',
+        'name' => 'technical_committee',
         'description' => 'Technical Committee',
       ]);
       
       Role::create([
-        'name' => 'ethics',
+        'name' => 'ethics_committee',
         'description' => 'Ethics Committee',
       ]);
       
       Role::create([
-        'name' => 'ministry',
+        'name' => 'ministry_and_content',
         'description' => 'Ministry and Content',
       ]);
     }

@@ -36,7 +36,7 @@
                     href="{{route('members.member', ['member'=>$member->id])}}" 
                     class="btn btn-secondary">View</a>
                   <a 
-                    href="{{route('members.book', ['member' => $member->id])}}" 
+                    href="{{route('members.showBookingForm', ['member' => $member->id])}}" 
                     class="btn btn-brown">Book</a>
                 </div>
               </div>

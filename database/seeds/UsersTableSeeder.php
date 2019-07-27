@@ -16,50 +16,57 @@ class UsersTableSeeder extends Seeder
     User::create([
       'firstname' => 'Edward',
       'lastname' => 'Nsolo',
+      'mobile' => '0758084395',
       'email' => 'nsolo@gmail.com',
-      'password' => bcrypt('nsolo@12'),
+      'password' => bcrypt('NSOLO'),
     ]);
     
     User::create([
       'firstname' => 'Baletse',
       'lastname' => 'Kabenda',
+      'mobile' => '0756338588',
       'email' => 'kbaletse@gmail.com',
-      'password' => bcrypt('kabenda@12'),
+      'password' => bcrypt('KABENDA'),
     ]);
     
     User::create([
       'firstname' => 'Janeth',
       'lastname' => 'Amon',
+      'mobile' => '0658185607',
       'email' => 'janeth_amon@yahoo.com',
-      'password' => bcrypt('janeth@12'),
+      'password' => bcrypt('AMON'),
     ]);
     
     User::create([
       'firstname' => 'Ley',
       'lastname' => 'Trude',
+      'mobile' => '0658185609',
       'email' => 'leytrude@gmail.com',
-      'password' => bcrypt('ley@12'),
+      'password' => bcrypt('TRUDE'),
     ]);
     
     User::create([
       'firstname' => 'Abdueli',
       'lastname' => 'Mdee',
+      'mobile' => '0658185408',
       'email' => 'mdee@gmail.com',
-      'password' => bcrypt('mdee@12'),
+      'password' => bcrypt('MDEE'),
     ]);
     
     User::create([
       'firstname' => 'Emmanuel',
       'lastname' => 'Chanai',
+      'mobile' => '0658185308',
       'email' => 'chanai@gmail.com',
-      'password' => bcrypt('chanai@12'),
+      'password' => bcrypt('CHANAI'),
     ]);
     
     User::create([
       'firstname' => 'Adeline',
       'lastname' => 'Mtunya',
+      'mobile' => '0658185208',
       'email' => 'mtunya@gmail.com',
-      'password' => bcrypt('mtunya@12'),
+      'password' => bcrypt('MTUNYA'),
     ]);
   }
 }
