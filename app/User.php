@@ -63,4 +63,14 @@ class User extends Authenticatable implements HasMedia
     return null;
   }
   
+  // Determine if a user is a normal member
+  public function isMember() {
+    return $this->specialization === 'singer' || $this->specialization === 'instrumentalist';
+  }
+  
+  // Determine if a user is one of admins
+  public function isAdmin() {
+    return !$this->isMember();
+  }
+  
 }

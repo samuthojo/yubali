@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMembershipApplicationsTable extends Migration
+class CreateApplicationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMembershipApplicationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('membership_applications', function (Blueprint $table) {
+        Schema::create('applications', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('firstname');
             $table->string('middlename')->nullable();

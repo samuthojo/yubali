@@ -5,7 +5,7 @@
 
   <div class="col-xs-12">
     
-    <h5 class="">
+    <h5 style="">
       If you have more questions about YUBALI FOUNDATION or 
       its activities please drop your details under the form below:
       <hr>

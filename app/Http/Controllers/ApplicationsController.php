@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\MembershipApplication;
+use App\Application;
 use App\User;
 
-class MembershipApplicationsController extends Controller
+class ApplicationsController extends Controller
 {
   public function showApplicationForm()
   {
@@ -16,7 +16,7 @@ class MembershipApplicationsController extends Controller
   public function index(Request $request)
   {
     $flag = $request->query('flag');
-    $applications = MembershipApplication::where('flag', $flag)->get();
+    $applications = Application::where('flag', $flag)->get();
     return view('members.applications', [
       'applications' => $applications,
     ]);
@@ -24,7 +24,7 @@ class MembershipApplicationsController extends Controller
   
   public function store(Request $request)
   {
-    MembershipApplication::create($request->all());
+    Application::create($request->all());
     
     $message = 'Your application has been received, ' .
                 'approval process is under-way, ' .
@@ -33,7 +33,7 @@ class MembershipApplicationsController extends Controller
     return back()->with('message', $message);
   }
   
-  public function approve(MembershipApplication $application)
+  public function approve(Application $application)
   {
     $flag = $application->flag;
     switch ($flag) {
@@ -87,7 +87,7 @@ class MembershipApplicationsController extends Controller
     // TODO: Send success email notification to applicant
   }
   
-  public function disapprove(Request $request, MembershipApplication $application)
+  public function disapprove(Request $request, Application $application)
   {
     $flag = $application->flag;
     
@@ -95,12 +95,12 @@ class MembershipApplicationsController extends Controller
     
     if ($flag === 'executive_director') {
       // TODO: Send disapprove email notification to applicant
-      $message = 'The Application has been disapproved and the applicant has been notified!'
+      $message = 'The Application has been disapproved and the applicant has been notified!';
       return back()->with('message', $message);
     } else {
       // TODO: Send disapprove email notification to executive_director
       // TODO: Send disapprove email notification to applicant
-      $message = 'The Application has been disapproved, both applicant and director have been notified!'
+      $message = 'The Application has been disapproved, both applicant and director have been notified!';
       return back()->with('message', $message);
     }
   }

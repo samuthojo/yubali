@@ -5,11 +5,11 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+require('./bootstrap')
 
-window.Vue = require('vue');
+window.Vue = require('vue')
 
-window.CoreUI = require('@coreui/coreui');
+window.CoreUI = require('@coreui/coreui')
 
 //Initialize tooltips everywhere 
 $(function() {

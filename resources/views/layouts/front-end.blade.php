@@ -29,10 +29,10 @@
         alt="Yubali Logo"
         id="logo">
       <div class="text-brown">
-        The organisation of talented and skilled gospel musicians!
+        <h4>The organisation of talented and skilled gospel musicians!</h4>
       </div>
       <div class="">
-        <strong>« <a class="text-brown normal" href="{{route('login')}}">Login</a> »</strong>
+        <h5><strong>« <a class="text-brown normal" href="{{route('login')}}">Login</a> »</strong></h5>
       </div>
     </div>
     
@@ -50,7 +50,7 @@
           id="collapsibleNavbar">
           
           <ul class="navbar-nav">
-            <li class="nav-item {{ areActiveRoutes(['main', 'members.*']) }}">
+            <li class="nav-item {{ isActiveRoute('main') }}">
               <a class="nav-link" 
                 href="{{ route('main') }}">HOME</a>
             </li>
@@ -58,11 +58,11 @@
               <a class="nav-link" 
                 href="{{ route('about') }}">ABOUT US</a>
             </li>
-            <li class="nav-item {{ isActiveRoute('apply') }}">
+            <li class="nav-item {{ isActiveRoute('applications.apply') }}">
               <a class="nav-link" 
                 href="{{ route('applications.apply') }}">REGISTRATION</a>
             </li>    
-            <li class="nav-item {{ areActiveRoutes(['events.index', 'events.event']) }}">
+            <li class="nav-item {{ isActiveRoute('events.index') }}">
               <a class="nav-link"
                 href="{{ route('events.index') }}">EVENTS</a>
             </li>    
@@ -78,6 +78,29 @@
     </nav>
     
     <div class="container" style="margin-top:20px;">
+      
+      @if(session('successMessage'))
+      <div class="row">
+        <div class="col-12">
+          <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Success!</strong> <br>{{session('successMessage')}}
+          </div>
+        </div>
+      </div>
+      @endif
+
+      @if ($errors->any())
+      <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Error!</strong>
+        <ul>
+          @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+      </div>
+      @endif
       
       @yield('content')
       

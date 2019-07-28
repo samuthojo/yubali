@@ -39,15 +39,15 @@
               style="width: 150px; object-fit: contain;">
           </div>
             
-          <form class="" action="" method="post">
+          <form class="" action="{{route('login')}}" method="post">
             
             @csrf
             
             <div class="row">
               <div class="form-group col-12">
-                <label style="font-weight: bold;" for="username">Username:</label>
-                <input type="text" name="username" class="form-control" 
-                  value="{{old('username')}}" id="username"
+                <label style="font-weight: bold;" for="email">Username:</label>
+                <input type="text" name="email" class="form-control" 
+                  value="{{old('email')}}" id="email"
                   placeholder="Username">
               </div>
             </div>
@@ -56,7 +56,7 @@
               <div class="form-group col-12">
                 <label style="font-weight: bold;" for="password">Password:</label>
                 <input type="password" name="password" class="form-control" 
-                  value="{{old('password')}}" id="password"
+                  id="password"
                   placeholder="Password">
               </div>
             </div>

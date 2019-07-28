@@ -18,7 +18,10 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+          $user = Auth::user();
+          if($user->isMember()) {
+            return redirect()->route('members.requests',['status'=>'approved']);
+          }
         }
 
         return $next($request);

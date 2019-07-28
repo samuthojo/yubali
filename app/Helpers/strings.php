@@ -29,6 +29,23 @@ if (!function_exists('fullName')) {
 }
 
 /**
+ * Return service category
+ */
+if (!function_exists('service_category')) {
+
+  function service_category($cat) {
+    if (is_set($cat)) {
+      if ($cat === 'church_service') {
+      	return 'Church Service';
+      } 
+			return ucfirst($cat);
+    }
+    return '';
+  }
+
+}
+
+/**
  * Return the date string
  */
 if (!function_exists('nice_date')) {

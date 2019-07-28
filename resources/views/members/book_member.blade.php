@@ -2,29 +2,6 @@
 
 @section('content')
 
-@if(session('successMessage'))
-<div class="row">
-  <div class="col-12">
-    <div class="alert alert-success alert-dismissible">
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-      <strong>Success!</strong> <br>{{session('successMessage')}}.
-    </div>
-  </div>
-</div>
-@endif
-
-@if ($errors->any())
-<div class="alert alert-danger alert-dismissible">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
-  <strong>Error!</strong>
-  <ul>
-    @foreach ($errors->all() as $error)
-      <li>{{ $error }}</li>
-    @endforeach
-  </ul>
-</div>
-@endif
-
 <h3>Please Fill In The Form Below To Book {{fullName($member->firstname,$member->middlename,$member->lastname)}}</h3>
 <hr>
 

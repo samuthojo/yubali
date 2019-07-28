@@ -14,6 +14,7 @@ nav ul > li.active {
 }
 .nav-item {
   padding: 0 18px;
+  font-weight: bold;
 }
 a.normal:hover {
   color: #28a745;
