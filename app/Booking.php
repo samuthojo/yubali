@@ -35,7 +35,7 @@ class Booking extends Model
   {
     return [
       'service_category' => 'required',
-      'other' => 'required_if:service_category,===,others',
+      'others' => 'required_if:service_category,===,others',
       'name' => 'required',
       'region' => 'required',
       'district' => 'required',
@@ -46,6 +46,13 @@ class Booking extends Model
       'email' => 'required|email',
       'start_date' => 'required|date',
       'end_date' => 'required|date|after_or_equal:start_date',
+    ];
+  }
+  
+  public static function errorMessages()
+  {
+    return [
+      'others.required_if' => 'The "Please Specify" field is required',
     ];
   }
 }

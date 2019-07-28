@@ -54,7 +54,7 @@ class BookingsController extends Controller
    */
   public function store(Request $request, User $member)
   {
-    $this->validate($request, Booking::rules());
+    $this->validate($request, Booking::rules(), Booking::errorMessages());
     $compare_date = now()->addDays(7)->format('Y-m-d');
     if(Carbon::parse($request->start_date)->format('Y-m-d') < $compare_date) {
       $errorMessage = 'Start date should be minimum of seven(7) days ' . 
