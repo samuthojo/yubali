@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Event;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class EventsController extends Controller
 {
@@ -14,8 +15,21 @@ class EventsController extends Controller
      */
     public function index()
     {
-      $events = Event::all();
+      $events = Event::latest('start_date')->limit(30)->get();
       return view('events.events', [
+        'events' => $events,
+      ]);
+    }
+    
+    /**
+     * Display a listing of the resource for CMS.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function list()
+    {
+      $events = Event::latest('start_date')->get();
+      return view('cms.events', [
         'events' => $events,
       ]);
     }
@@ -34,7 +48,7 @@ class EventsController extends Controller
      */
     public function create()
     {
-        //
+      return view('cms.events_form');
     }
 
     /**
@@ -45,7 +59,9 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $this->validate($request, Event::rules());
+      Event::create($request->all());
+      return back()->with('successMessage', 'Event created successfully!');
     }
 
     /**
@@ -67,7 +83,7 @@ class EventsController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+      return view('cms.events_form', compact('event'));
     }
 
     /**
@@ -79,7 +95,9 @@ class EventsController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        //
+      $this->validate($request, Event::rules());
+      Event::where('id', $event->id)->update($request->except(['_token','_method']));
+      return back()->with('successMessage', 'Event updated successfully!');
     }
 
     /**
@@ -90,6 +108,7 @@ class EventsController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+      $event->delete();
+      return back()->with('successMessage', 'Event deleted successfully!');
     }
 }

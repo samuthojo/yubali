@@ -55,6 +55,7 @@ class LoginController extends Controller
       if ($user->isMember()) {
         return route('members.requests',['status'=>'approved']);
       }
+      return redirect()->route('dashboard');
     }
 
     public function logout(Request $request)

@@ -15,6 +15,24 @@ Auth::routes();
 
 // Routes That Require Auth
 Route::middleware('auth')->group(function () {
+  Route::view('/dashboard', 'cms.dashboard')->name('dashboard');
+  
+  Route::resources([
+    'roles' => 'RolesController',
+  ]);
+  
+  Route::get('/cms_events/list', 'EventsController@list')->name('events.list');
+  
+  Route::get('/cms_events/{event}', 'EventsController@create')->name('events.create');
+  
+  Route::post('/cms_events/{event}', 'EventsController@store')->name('events.store');
+  
+  Route::get('/cms_events/{event}', 'EventsController@edit')->name('events.edit');
+  
+  Route::patch('/cms_events/{event}', 'EventsController@update')->name('events.update');
+  
+  Route::delete('/cms_events/{event}', 'EventsController@destroy')->name('events.destroy');
+  
   Route::get('/members/home', 'BookingsController@index')->name('members.requests');
   
   Route::get('requests/{request}', 'BookingsController@show')->name('members.request');

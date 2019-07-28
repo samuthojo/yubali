@@ -19,9 +19,12 @@ class RedirectIfAuthenticated
     {
         if (Auth::guard($guard)->check()) {
           $user = Auth::user();
-          if($user->isMember()) {
+          if($user->isAdmin()) {
+            return redirect()->route('dashboard');
+          } else {
+            // Just a member
             return redirect()->route('members.requests',['status'=>'approved']);
-          }
+          } 
         }
 
         return $next($request);

@@ -11,8 +11,20 @@ class Role extends Model
     'name', 'description',
   ];
   
+  protected $hidden = [
+    'identifier_name',
+  ];
+  
   public function users() 
   {
     return $this->belongsToMany(User::class);
+  }
+  
+  public static function rules()
+  {
+    return [
+      'name' => 'required',
+      'description' => 'required',
+    ];
   }
 }

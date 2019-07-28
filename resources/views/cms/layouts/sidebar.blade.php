@@ -4,7 +4,8 @@
     
     @if(Auth::user()->isAdmin())
     <li class="nav-item">
-      <a class="nav-link" href="{{url('/dashboard')}}">
+      <a class="nav-link {{ isActiveRoute('dashboard') }}" 
+        href="{{url('/dashboard')}}">
         <i class="nav-icon cui-speedometer"></i> Dashboard
       </a>
     </li>
@@ -28,13 +29,33 @@
     </li>
     @endif    
     
-    @if(Auth::user()->isAdmin())    
-    <li class="nav-title">Members</li>
+    @if(Auth::user()->isSuperAdmin())    
+    <li class="nav-title">Featured</li>
     
     <li class="nav-item">
-      <a class="nav-link" 
-         href="#">
-      <i class="nav-icon cui-briefcase"></i>Staff</a>
+      <a class="nav-link {{ isActiveRoute('roles.index') }}" 
+         href="{{ route('roles.index') }}">
+      <i class="nav-icon cui-briefcase"></i>Roles</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-link {{ isActiveRoute('events.list') }}" 
+         href="{{ route('events.list') }}">
+      <i class="nav-icon cui-calendar"></i>Events</a>
+    </li>
+    
+    <li class="nav-title">Users</li>
+    
+    <li class="nav-item">
+      <a class="nav-link " 
+         href="">
+      <i class="nav-icon fa fa-handshake-o"></i>Managers</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-link " 
+         href="">
+      <i class="nav-icon cui-people"></i>Members</a>
     </li>
     @endif
     

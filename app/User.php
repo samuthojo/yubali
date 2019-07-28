@@ -73,4 +73,7 @@ class User extends Authenticatable implements HasMedia
     return !$this->isMember();
   }
   
+  public function isSuperAdmin() {
+    return $this->roles()->where('identifier_name', 'super_admin')->exists();
+  }
 }

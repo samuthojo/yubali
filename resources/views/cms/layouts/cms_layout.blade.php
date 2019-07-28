@@ -96,14 +96,10 @@
         <div class="container mt-3 mb-3">
           
           @if(session('successMessage'))
-          <div class="row">
-            <div class="col-12">
-              <div class="alert alert-success alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <strong>Success!</strong> <br>{{session('successMessage')}}
-              </div>
+            <div class="alert alert-success alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <strong>Success!</strong> <br>{{session('successMessage')}}
             </div>
-          </div>
           @endif
 
           @if ($errors->any())

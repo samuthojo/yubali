@@ -25,6 +25,7 @@ class EventsTableSeeder extends Seeder
                         'cupidatat non proident, sunt in culpa qui officia '.
                         'deserunt mollit anim id est laborum.',
         'start_date' => now()->addDays($i),
+        'end_date' => now()->addDays($i + 1),
         'starts_at' => '10:00 AM',
         'ends_at' => '03:00 PM',
         'venue' => 'Tabata, Dar es Salaam',
