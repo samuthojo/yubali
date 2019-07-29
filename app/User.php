@@ -76,4 +76,13 @@ class User extends Authenticatable implements HasMedia
   public function isSuperAdmin() {
     return $this->roles()->where('identifier_name', 'super_admin')->exists();
   }
+  
+  public static function rules(string $id = null) {
+    return [
+      'firstname' => 'required',
+      'lastname' => 'required',
+      'mobile' => 'required|unique:users,mobile,' . $id,
+      'email' => 'required|email|unique:users,email,' . $id,
+    ];
+  }
 }

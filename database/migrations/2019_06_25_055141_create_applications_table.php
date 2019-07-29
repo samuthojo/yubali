@@ -32,6 +32,8 @@ class CreateApplicationsTable extends Migration
             $table->string('church_location');
             $table->text('biography');
             $table->string('flag')->default('office_admin');
+            $table->string('status')->default('pending');
+            $table->text('reason')->nullable();
             $table->timestamps();
         });
     }

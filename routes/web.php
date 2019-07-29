@@ -1,5 +1,8 @@
 <?php
 
+use App\User;
+use App\Application;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,33 +17,57 @@
 Auth::routes();
 
 // Routes That Require Auth
-Route::middleware('auth')->group(function () {
-  Route::view('/dashboard', 'cms.dashboard')->name('dashboard');
+Route::middleware('auth')->prefix('cms')->group(function () {
+  
+  Route::get('/dashboard', function() {
+    $count = [
+      'singers' => User::where('specialization','singer')->count(),
+      'instrumentalists' => User::where('specialization','instrumentalist')->count(),
+    ];
+    $flag = Auth::user()->roles()->first()->identifier_name;
+    $pending_count = Application::where('flag', $flag)
+                              ->where('status', 'pending')
+                              ->count();
+    return view('cms.dashboard', compact('count', 'pending_count'));
+  })->name('dashboard');
   
   Route::resources([
     'roles' => 'RolesController',
+    'users' => 'UsersController',
   ]);
   
-  Route::get('/cms_events/list', 'EventsController@list')->name('events.list');
+  Route::get('/events/list', 'EventsController@list')->name('events.list');
   
-  Route::get('/cms_events/{event}', 'EventsController@create')->name('events.create');
+  Route::get('/events', 'EventsController@create')->name('events.create');
   
-  Route::post('/cms_events/{event}', 'EventsController@store')->name('events.store');
+  Route::post('/events', 'EventsController@store')->name('events.store');
   
-  Route::get('/cms_events/{event}', 'EventsController@edit')->name('events.edit');
+  Route::get('/events/{event}', 'EventsController@edit')->name('events.edit');
   
-  Route::patch('/cms_events/{event}', 'EventsController@update')->name('events.update');
+  Route::patch('/events/{event}', 'EventsController@update')->name('events.update');
   
-  Route::delete('/cms_events/{event}', 'EventsController@destroy')->name('events.destroy');
+  Route::delete('/events/{event}', 'EventsController@destroy')->name('events.destroy');
   
   Route::get('/members/home', 'BookingsController@index')->name('members.requests');
   
+  Route::get('/members/list', 'MembersController@cmsIndex')->name('members.cmsIndex');
+  
+  Route::get('/members/{member}', 'MembersController@cmsShow')->name('members.cmsShow');
+
   Route::get('requests/{request}', 'BookingsController@show')->name('members.request');
   
   Route::patch('requests/{request}', 'BookingsController@accept')->name('members.accept');
   
   Route::delete('requests/{request}', 'BookingsController@decline')->name('members.decline');
 
+  Route::get('/applications', 'ApplicationsController@index')->name('applications.index');
+  
+  Route::get('/applications/{application}', 'ApplicationsController@show')->name('applications.show');
+  
+  Route::post('/applications/{application}/approve', 'ApplicationsController@approve')->name('applications.approve');
+  
+  Route::post('/applications/{application}/disapprove', 'ApplicationsController@disapprove')->name('applications.disapprove');
+    
   Route::view('/change_password', 'cms.change_password')
        ->name('change_password');
 });
@@ -50,9 +77,6 @@ Route::view('/about', 'about_us')->name('about');
 Route::view('/contact', 'contact_us')->name('contact');
 Route::get('/apply', 'ApplicationsController@showApplicationForm')->name('applications.apply');
 Route::post('/apply', 'ApplicationsController@store')->name('applications.store');
-Route::get('/applications', 'ApplicationsController@index')->name('applications.index');
-Route::post('/applications/{application}/approve', 'ApplicationsController@approve')->name('applications.approve');
-Route::post('/applications/{application}/disapprove', 'ApplicationsController@disapprove')->name('applications.disapprove');
 Route::get('/events', 'EventsController@index')->name('events.index');
 Route::get('/events/{event}', 'EventsController@getEvent')->name('events.event');
 Route::get('/members', 'MembersController@index')->name('members.index');

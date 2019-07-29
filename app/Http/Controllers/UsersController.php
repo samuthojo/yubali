@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Role;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -14,7 +15,15 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+      $roles = Role::whereNotIn('identifier_name', ['singer', 'instrumentalist'])
+                  ->get();
+      $users = collect([]);
+      foreach ($roles as $role) {
+        $users = $users->merge($role->users);
+      }
+      $users = $users->unique();
+      $roles = Role::all();
+      return view('cms.users',compact('users', 'roles'));
     }
 
     /**
@@ -24,7 +33,8 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+      $roles = Role::all();
+      return view('cms.users_form', compact('roles'));
     }
 
     /**
@@ -35,7 +45,13 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $this->validate($request, User::rules());
+      $request->merge([
+        'password' => bcrypt(strtoupper($request->lastname)),
+      ]);
+      $user = User::create($request->all());
+      $user->roles()->attach(['role_id' => $request->role_id]);
+      return back()->with('successMessage', 'User created successfully');
     }
 
     /**
@@ -57,7 +73,9 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-        //
+      $roles = Role::all();
+      $user->role_id = $user->roles()->first()->id;
+      return view('cms.users_form', compact('user', 'roles'));
     }
 
     /**
@@ -69,7 +87,11 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+      $this->validate($request, User::rules($user->id));
+      User::where('id', $user->id)
+          ->update($request->only(['firstname', 'lastname', 'mobile', 'email']));
+      $user->roles()->sync(['role_id' => $request->role_id]);
+      return back()->with('successMessage', 'User updated successfully');
     }
 
     /**
@@ -80,6 +102,7 @@ class UsersController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+      $user->delete();
+      return back()->with('successMessage', 'User deleted successfully');
     }
 }

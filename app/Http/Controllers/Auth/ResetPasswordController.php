@@ -28,7 +28,7 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/change_password';
+    // protected $redirectTo = '/admin/change_password';
 
     /**
      * Create a new controller instance.
@@ -43,7 +43,7 @@ class ResetPasswordController extends Controller
 
     public function showResetForm(Request $request, $token = null)
     {
-        return view('admin.change_password');
+        return view('cms.change_password');
     }
 
     public function reset(Request $request)
@@ -52,9 +52,9 @@ class ResetPasswordController extends Controller
         $this->validate($request, $this->rules(), $this->validationErrorMessages());
 
         $user = Auth::user();
-        $username = $user->username;
+        $email = $user->email;
         $password = $request->current_password;
-        if(Auth::attempt(compact('username', 'password'))) {
+        if(Auth::attempt(compact('email', 'password'))) {
           $this->resetPassword($user, $request->password);
         }
         else {
@@ -85,11 +85,16 @@ class ResetPasswordController extends Controller
         $user->password = Hash::make($password);
         $user->save();
     }
+    
+    public function redirectTo()
+    {
+      return route('change_password');
+    }
 
     protected function sendResetResponse($response)
     {
         return redirect($this->redirectPath())
-                            ->with('message', 'Password reset successfully');
+                            ->with('successMessage', 'Password reset successfully');
     }
 
     protected function sendResetFailedResponse(Request $request)

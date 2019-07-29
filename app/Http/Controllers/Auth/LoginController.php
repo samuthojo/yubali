@@ -55,7 +55,10 @@ class LoginController extends Controller
       if ($user->isMember()) {
         return route('members.requests',['status'=>'approved']);
       }
-      return redirect()->route('dashboard');
+      if ($user->isSuperAdmin()) {
+        return route('roles.index');
+      }
+      return route('dashboard');
     }
 
     public function logout(Request $request)
@@ -64,6 +67,6 @@ class LoginController extends Controller
 
       $request->session()->invalidate();
 
-      return redirect('/login');
+      return redirect()->route('login');
     }
 }

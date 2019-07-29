@@ -46,12 +46,29 @@ if (!function_exists('service_category')) {
 }
 
 /**
+ * Return salvation status
+ */
+if (!function_exists('salvation_status')) {
+
+  function salvation_status($status) {
+    if (is_set($status)) {
+      if ($status === 'not_saved') {
+      	return 'Not Saved';
+      } 
+			return ucfirst($status);
+    }
+    return '';
+  }
+
+}
+
+/**
  * Return the date string
  */
 if (!function_exists('nice_date')) {
 
 	function nice_date($value) {
-  	return ($value) ? \Carbon\Carbon::parse($value)->format('l: jS F, Y') : null;
+  	return ($value) ? \Carbon\Carbon::parse($value)->format('jS F, Y') : null;
 	}
 
 }

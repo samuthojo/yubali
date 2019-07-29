@@ -29,23 +29,23 @@
    <div class="row">
      <div class="form-group col-md-4">
        <label style="font-weight: bold;" for="dob">Date Of Birth:</label>
-       <input type="text" name="birthdate" class="form-control" id="dob"
-        placeholder="eg. 22-03-1990" value="{{ old('birthdate') }}">
+       <input type="date" name="birthdate" class="form-control" id="dob"
+         value="{{ old('birthdate') }}">
      </div>
      <div class="form-group col-md-4">
        <label style="font-weight: bold;" for="gender">Gender:</label>
        <select name="gender" class="form-control" id="gender">
          <option selected disabled>select</option>
-         <option>Male</option>
-         <option>Female</option>
+         <option value="male">Male</option>
+         <option value="female">Female</option>
        </select>
      </div> 
      <div class="form-group col-md-4">
-       <label style="font-weight: bold;" for="applicant_type">Applicant Type:</label>
-       <select name="applicant_type" class="form-control" id="applicant_type">
+       <label style="font-weight: bold;" for="specialization">Specialization:</label>
+       <select name="specialization" class="form-control" id="specialization">
          <option selected disabled>select</option>
-         <option>Singer</option>
-         <option>Instrumentalist</option>
+         <option value="singer">Singer</option>
+         <option value="instrumentalist">Instrumentalist</option>
        </select>
      </div> 
    </div>
@@ -54,10 +54,10 @@
        <label style="font-weight: bold;" for="marital_status">Marital Status:</label>
        <select name="marital_status" class="form-control" id="marital_status">
          <option selected disabled>select</option>
-         <option>Single</option>
-         <option>Married</option>
-         <option>Divorced</option>
-         <option>Separated</option>
+         <option value="single">Single</option>
+         <option value="married">Married</option>
+         <option value="divorced">Divorced</option>
+         <option value="separated">Separated</option>
        </select>
      </div> 
      <div class="form-group col-md-4">
@@ -88,8 +88,8 @@
        <label style="font-weight: bold;" for="salvation_status">Salvation Status:</label>
        <select name="salvation_status" class="form-control" id="salvation_status">
          <option selected disabled>select</option>
-         <option>Saved</option>
-         <option>Not Saved</option>
+         <option value="saved">Saved</option>
+         <option value="not_saved">Not Saved</option>
        </select>
      </div> 
    </div>
@@ -98,10 +98,10 @@
        <label style="font-weight: bold;" for="denomination">Denomination:</label>
        <select name="denomination" class="form-control" id="denomination">
          <option selected disabled>select</option>
-         <option>Adventist</option>
-         <option>Catholic</option>
-         <option>Pentecostal</option>
-         <option>Protestant</option>
+         <option value="adventist">Adventist</option>
+         <option value="catholic">Catholic</option>
+         <option value="pentecostal">Pentecostal</option>
+         <option value="protestant">Protestant</option>
        </select>
      </div> 
      <div class="form-group col-md-4">
@@ -119,8 +119,7 @@
      <div class="form-group col-12">
        <label style="font-weight: bold;" for="biography">Biography:</label>
        <textarea name="biography" class="form-control" id="biography"
-        placeholder="eg. Short Biography" 
-        value="{{ old('biography') }}"
+        placeholder="Short Biography" 
         rows="3"></textarea>
      </div>
    </div>
@@ -128,5 +127,16 @@
   </form>
   
 </div>
+
+<script type="text/javascript">
+$(function () {
+  $("#denomination").val("{{old('denomination')}}")
+  $("#marital_status").val("{{old('marital_status')}}")
+  $("#salvation_status").val("{{old('salvation_status')}}")
+  $("#specialization").val("{{old('specialization')}}")
+  $("#gender").val("{{old('gender')}}")
+  $("#biography").val("{{old('biography')}}")
+})  
+</script>
 
 @endsection

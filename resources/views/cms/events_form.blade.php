@@ -2,9 +2,9 @@
 
 @section('content')
 
-<div class="row d-flex justify-content-center">
+<div class="row">
   
-  <div class="col-md-8">
+  <div class="col-12">
     
     <div class="card">
       
@@ -18,20 +18,28 @@
       
       <div class="card-body">
         
-        <form action="{{route('events.update', ['event'=>$event->id])}}" method="post">
+        <form 
+          @isset($event)
+            {{'action='}}
+            "{{route('events.update', ['event'=>$event->id])}}"
+          @else
+            {{'action='}}
+            "{{route('events.store')}}"
+          @endisset 
+          method="post">
           @csrf
-          @method('PATCH')
+          @method(isset($event) ? 'PATCH' : 'POST')
           <div class="row">
             <div class="col-md-6 form-group">
               <label for="title" style="font-weight: bold;">Title:</label>
               <input type="text" name="title" value="{{old('title')}}"
-                class="form-control"  
+                class="form-control" placeholder="Title"  
                 id="title">
             </div>
             <div class="col-md-6 form-group">
               <label for="venue" style="font-weight: bold;">Venue:</label>
               <input type="text" name="venue" value="{{old('venue')}}"
-                class="form-control"  
+                class="form-control" placeholder="Venue"  
                 id="venue">
             </div>
           </div>
@@ -45,7 +53,7 @@
             <div class="col-md-6 form-group">
               <label for="ends_at" style="font-weight: bold;">Ends At:</label>
               <input type="time" name="ends_at" value="{{old('ends_at')}}"
-                class="form-control"  
+                class="form-control" placeholder="Ends At"
                 id="ends_at">
             </div>
           </div>
@@ -53,13 +61,13 @@
             <div class="col-md-6 form-group">
               <label for="start_date" style="font-weight: bold;">Start Date:</label>
               <input type="date" name="start_date" value="{{old('start_date')}}"
-                class="form-control"  
+                class="form-control" placeholder="Start Date"
                 id="start_date">
             </div>
             <div class="col-md-6 form-group">
               <label for="end_date" style="font-weight: bold;">End Date:</label>
               <input type="date" name="end_date" value="{{old('end_date')}}"
-                class="form-control"  
+                class="form-control" placeholder="End Date"
                 id="end_date">
             </div>
           </div>
@@ -67,7 +75,7 @@
             <div class="col-12 form-group">
               <label for="description" style="font-weight: bold;">Description:</label>
               <textarea name="description" value="{{old('description')}}"
-                class="form-control" rows="3"     
+                class="form-control" rows="3" placeholder="Description"   
                 id="description"></textarea>
             </div>
           </div>
@@ -87,6 +95,7 @@
 </div>
 
 <script type="text/javascript">
+  @isset($event)
   let event = {!! json_encode($event) !!}
   $("#title").val(event.title)
   $("#venue").val(event.venue)
@@ -95,6 +104,7 @@
   $("#end_date").val(event.end_date)
   $("#ends_at").val(event.ends_at)
   $("#description").val(event.description)
+  @endisset
 </script>
 
 @endsection

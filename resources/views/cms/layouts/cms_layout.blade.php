@@ -38,7 +38,7 @@
       
       <!-- Header content here -->
             
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="{{route('main')}}" target="_blank">
         <span class="logo-text">Yubali</span>
       </a>
       

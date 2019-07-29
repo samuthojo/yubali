@@ -2,11 +2,29 @@
   
   <ul class="nav">
     
-    @if(Auth::user()->isAdmin())
+    @if(Auth::user()->isAdmin() && !Auth::user()->isSuperAdmin())
     <li class="nav-item">
       <a class="nav-link {{ isActiveRoute('dashboard') }}" 
-        href="{{url('/dashboard')}}">
+        href="{{route('dashboard')}}">
         <i class="nav-icon cui-speedometer"></i> Dashboard
+      </a>
+    </li>
+    
+    <li class="nav-title">Applications</li>
+    
+    <li class="nav-item">
+      <a class="nav-link " 
+        href="{{route('applications.index')}}">
+        <i class="nav-icon cui-note"></i> Pending <span class="badge badge-pill badge-warning">{{$pending_count}}</span>
+      </a>
+    </li>
+    
+    <li class="nav-title">Members</li>
+    
+    <li class="nav-item">
+      <a class="nav-link " 
+        href="{{route('members.cmsIndex')}}">
+        <i class="nav-icon cui-people"></i> List 
       </a>
     </li>
     @endif
@@ -39,23 +57,15 @@
     </li>
     
     <li class="nav-item">
+      <a class="nav-link {{ isActiveRoute('users.index') }}" 
+         href="{{ route('users.index') }}">
+      <i class="nav-icon fa fa-handshake-o"></i>Administrators</a>
+    </li>
+    
+    <li class="nav-item">
       <a class="nav-link {{ isActiveRoute('events.list') }}" 
          href="{{ route('events.list') }}">
       <i class="nav-icon cui-calendar"></i>Events</a>
-    </li>
-    
-    <li class="nav-title">Users</li>
-    
-    <li class="nav-item">
-      <a class="nav-link " 
-         href="">
-      <i class="nav-icon fa fa-handshake-o"></i>Managers</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-link " 
-         href="">
-      <i class="nav-icon cui-people"></i>Members</a>
     </li>
     @endif
     

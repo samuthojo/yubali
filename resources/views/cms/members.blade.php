@@ -5,7 +5,7 @@
 <div class="card">
   
   <div class="card-header">
-    Roles
+    Members
   </div>
   
   <div class="card-body">
@@ -16,19 +16,24 @@
         <thead>
           <tr>
             <th>Name</th>
+            <th>Specialization</th>
+            <th>Denomination</th>
+            <th>Birth Date</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          @foreach($roles as $role)
+          @foreach($members as $member)
           <tr>
-            <td>{{$role->name}}</td>
+            <td>{{fullName($member->firstname, $member->middlename, $member->lastname)}}</td>
+            <td>{{ucfirst($member->specialization)}}</td>
+            <td>{{ucfirst($member->denomination)}}</td>
+            <td>{{nice_date($member->birth_date)}}</td>
             <td>
               <div class="btn-group">
                 <a type="button" class="btn btn-pill btn-dark"
-                  data-toggle="tooltip" title="view details"
-                  href="{{route('roles.edit', ['role'=>$role->id])}}">
-                  Edit
+                  href="{{route('members.cmsShow', ['member'=>$member->id])}}">
+                  View
                 </a>
               </div>
             </td>

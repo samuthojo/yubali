@@ -62,28 +62,30 @@
 @include('cms.modals.decline_request')
 
 <script type="text/javascript">
-$("#yubali-table").DataTable({
-  iDisplayLength: 6,
-  bLengthChange: false
-})
-$(".btn-accept").on("click", function() {
-  let request_id = $(this).attr('id')
-  $("#acceptForm").attr("action", '/requests/' + request_id)
-  $("#acceptRequest").modal({
-    backdrop: 'static',
-    keyboard: false
+$(function () {
+  $(".btn-accept").on("click", function() {
+    let request_id = $(this).attr('id')
+    $("#acceptForm").attr("action", '/cms/requests/' + request_id)
+    $("#acceptRequest").modal({
+      backdrop: 'static',
+      keyboard: false
+    })
   })
-})
-$(".btn-decline").on("click", function() {
-  let request_id = $(this).attr('id')
-  $("#declineForm").attr("action", '/requests/' + request_id)
-  $("#declineRequest").modal({
-    backdrop: 'static',
-    keyboard: false
+  $(".btn-decline").on("click", function() {
+    let request_id = $(this).attr('id')
+    $("#declineForm").attr("action", '/cms/requests/' + request_id)
+    $("#declineRequest").modal({
+      backdrop: 'static',
+      keyboard: false
+    })
   })
-})
-$("#declineRequest").on("hide.bs.modal", function (ev) {
-  $('#declineTextarea').val("")
+  $("#declineRequest").on("hide.bs.modal", function (ev) {
+    $('#declineTextarea').val("")
+  })
+  $("#yubali-table").DataTable({
+    iDisplayLength: 6,
+    bLengthChange: false
+  })
 })
 </script>
 
