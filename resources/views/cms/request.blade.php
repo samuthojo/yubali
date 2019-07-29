@@ -5,15 +5,15 @@
 <div class="card">
   
   <div class="card-header">
-    <a class="btn btn-pill btn-secondary" href="{{route('members.requests', ['status'=>session('status')])}}"
+    {{--<a class="btn btn-pill btn-secondary" href="{{route('members.requests', ['status'=>session('status')])}}"
       data-toggle="tooltip" title="Back">
       <i class="fa fa-arrow-left"></i>
-    </a>
+    </a>--}}
     Request Details
   </div>
   
   <div class="card-body">
-    
+              
     <div class="table-responsive">
       
       <table class="table table-striped"> 

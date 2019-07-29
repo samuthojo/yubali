@@ -37,9 +37,9 @@
             <td>{{$event->title}}</td>
             <td>{{$event->venue}}</td>
             <td>{{nice_date($event->start_date)}}</td>
-            <td>{{$event->starts_at}}</td>
+            <td>{{nice_time($event->starts_at)}}</td>
             <td>{{nice_date($event->end_date)}}</td>
-            <td>{{$event->ends_at}}</td>
+            <td>{{nice_time($event->ends_at)}}</td>
             <td>
               <div class="btn-group">
                 <a type="button" class="btn btn-pill btn-dark"

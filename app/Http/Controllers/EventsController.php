@@ -15,7 +15,9 @@ class EventsController extends Controller
      */
     public function index()
     {
-      $events = Event::latest('start_date')->limit(30)->get();
+      $today = now()->format('Y-m-d');
+      $events = Event::whereDate('start_date', '>=', $today)
+                      ->oldest('start_date')->limit(30)->get();
       return view('events.events', [
         'events' => $events,
       ]);
@@ -28,7 +30,9 @@ class EventsController extends Controller
      */
     public function list()
     {
-      $events = Event::latest('start_date')->get();
+      $today = now()->format('Y-m-d');
+      $events = Event::whereDate('start_date', '>=', $today)
+                      ->oldest('start_date')->get();
       return view('cms.events', [
         'events' => $events,
       ]);

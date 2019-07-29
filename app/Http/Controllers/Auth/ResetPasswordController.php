@@ -43,7 +43,7 @@ class ResetPasswordController extends Controller
 
     public function showResetForm(Request $request, $token = null)
     {
-        return view('cms.change_password');
+      return view('cms.change_password');
     }
 
     public function reset(Request $request)

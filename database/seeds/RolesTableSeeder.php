@@ -31,6 +31,12 @@ class RolesTableSeeder extends Seeder
       ]);
       
       Role::create([
+        'name' => 'Deputy Executive Director',
+        'identifier_name' => 'deputy_executive_director',
+        'description' => 'Deputy Executive Director', 
+      ]);
+      
+      Role::create([
         'name' => 'Secretary General',
         'identifier_name' => 'secretary_general',
         'description' => 'Secretary General',

@@ -65,7 +65,7 @@
 $(function () {
   $(".btn-accept").on("click", function() {
     let request_id = $(this).attr('id')
-    $("#acceptForm").attr("action", '/cms/requests/' + request_id)
+    $("#acceptForm").attr("action", '/cms/bookings/' + request_id)
     $("#acceptRequest").modal({
       backdrop: 'static',
       keyboard: false
@@ -73,7 +73,7 @@ $(function () {
   })
   $(".btn-decline").on("click", function() {
     let request_id = $(this).attr('id')
-    $("#declineForm").attr("action", '/cms/requests/' + request_id)
+    $("#declineForm").attr("action", '/cms/bookings/' + request_id)
     $("#declineRequest").modal({
       backdrop: 'static',
       keyboard: false

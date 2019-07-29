@@ -72,3 +72,31 @@ if (!function_exists('nice_date')) {
 	}
 
 }
+
+/**
+ * Return the time string
+ */
+if (!function_exists('nice_time')) {
+
+	function nice_time($value) {
+  	return ($value) ? \Carbon\Carbon::parse($value)->format('h:i A') : null;
+	}
+
+}
+
+/**
+ * Return the age string
+ */
+if (!function_exists('age')) {
+
+	function age($birthdate) {
+		if($birthdate) {
+			$date = new DateTime($birthdate);
+			$now = new DateTime();
+			$interval = $now->diff($date);
+			return $interval->y;
+		}
+		return null;
+	}
+
+}

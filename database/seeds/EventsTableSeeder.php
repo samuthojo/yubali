@@ -12,6 +12,8 @@ class EventsTableSeeder extends Seeder
    */
   public function run()
   {
+    $faker = Faker\Factory::create();
+    
     for ($i=0; $i < 5; $i++) { 
       Event::create([
         'title' => 'Yubali Imba Festival',
@@ -26,8 +28,8 @@ class EventsTableSeeder extends Seeder
                         'deserunt mollit anim id est laborum.',
         'start_date' => now()->addDays($i),
         'end_date' => now()->addDays($i + 1),
-        'starts_at' => '10:00 AM',
-        'ends_at' => '03:00 PM',
+        'starts_at' => $faker->time($format = 'H:i', $max = 'now'),
+        'ends_at' => $faker->time($format = 'H:i', $max = 'now'),
         'venue' => 'Tabata, Dar es Salaam',
       ]);
     }

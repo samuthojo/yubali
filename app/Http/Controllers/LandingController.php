@@ -18,4 +18,11 @@ class LandingController extends Controller
       'instrumentalists' => $instrumentalists,
     ]);
   }
+  
+  public function contact(Request $request)
+  {
+    $successMessage = "We have received your message, we'll get back to you soon!";
+    return back()->with('successMessage', $successMessage);
+  }
+  
 }

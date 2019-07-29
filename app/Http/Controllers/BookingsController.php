@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use App\Events\BookingCancelled;
+use App\Events\BookingAccepted;
 
 class BookingsController extends Controller
 {
@@ -19,18 +21,14 @@ class BookingsController extends Controller
   {
     $member = Auth::user();
     $status = $request->query('status', 'approved');
-    session(['status' => $status]);
     $today = now()->format('Y-m-d');
-    $requests = $member->bookings()->where('status', $status)
+    $requests = $member->bookings()
+                      ->where('status', $status)
                       ->whereDate('end_date', '>=', $today)
                       ->oldest('start_date')->get();
-    $pending_count = $member->bookings()->where('status', 'pending')
-                            ->whereDate('start_date', '>=', $today)
-                            ->whereDate('end_date', '>=', $today)->count();
     return view('cms.booking_requests', [
       'page_title' => ucfirst($status) . ' Requests',
       'requests' => $requests,
-      'pending_count' => $pending_count, 
     ]);
   }
 
@@ -108,59 +106,48 @@ class BookingsController extends Controller
    * @param  \App\Booking  $booking
    * @return \Illuminate\Http\Response
    */
-  public function show(Booking $request)
+  public function show(Booking $booking)
   {
     $member = Auth::user();
-    $today = now()->format('Y-m-d');
-    $pending_count = $member->bookings()->where('status', 'pending')
-                            ->whereDate('start_date', '>=', $today)
-                            ->whereDate('end_date', '>=', $today)->count();
     return view('cms.request', [
-      'request' => $request,
-      'pending_count' => $pending_count,
+      'request' => $booking,
     ]);
   }
-
-  /**
-   * Show the form for editing the specified resource.
-   *
-   * @param  \App\Booking  $booking
-   * @return \Illuminate\Http\Response
-   */
-  public function edit(Booking $booking)
-  {
-      //
-  }
-
-  /**
-   * Update the specified resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @param  \App\Booking  $booking
-   * @return \Illuminate\Http\Response
-   */
-  public function update(Request $request, Booking $booking)
-  {
-      //
-  }
   
-  public function accept($id)
+  public function accept(Request $request, Booking $booking)
   {
-    Booking::where('id', $id)->update(['status' => 'approved']);
+    Booking::where('id', $booking->id)->update(['status' => 'approved']);
+    
     $successMessage = 'You have successfully accepted the request';
+
+    try {
+      //To dispatch the BookingAccepted event
+      event(new BookingAccepted($booking));
+    } catch (\Throwable $e) {
+      return back()->with('successMessage', $successMessage);
+    }
+    
     return back()->with('successMessage', $successMessage);
   }
 
-  /**
-   * Remove the specified resource from storage.
-   *
-   * @param  int id
-   * @return \Illuminate\Http\Response
-   */
-  public function decline($id)
+  public function decline(Request $request, Booking $booking)
   {
-    Booking::where('id', $id)->update(['status' => 'rejected']);
+    Booking::where('id', $booking->id)->update([
+      'status' => 'rejected',
+      'reason' => $request->reason,
+    ]);
+    
+    $booking->refresh(); // Refresh existing model with new updates   
+    
     $successMessage = 'You have successfully declined the request';
+    
+    try {
+      //To dispatch the BookingCancelled event
+      event(new BookingCancelled($booking));
+    } catch (\Throwable $e) {
+      return back()->with('successMessage', $successMessage);
+    }
+    
     return back()->with('successMessage', $successMessage);
   }
 }

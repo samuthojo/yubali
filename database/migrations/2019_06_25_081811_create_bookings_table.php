@@ -27,6 +27,7 @@ class CreateBookingsTable extends Migration
         $table->date('start_date');
         $table->date('end_date');
         $table->string('status')->default('pending');
+        $table->string('reason')->nullable();
         $table->unsignedBigInteger('user_id');
         $table->timestamps();
         // Set the foreign keys

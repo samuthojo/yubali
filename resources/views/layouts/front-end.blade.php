@@ -110,7 +110,7 @@
         style="margin-bottom:0; background-color: rgba(233, 236, 239, 0.4);">
       <p>
         <h4 class="text-brown"><i>Stay connected with us</i></h4>
-        <a href="https://www.facebook.com/tazarambeyasaccos.tambesaccoso" target="_blank" data-toggle="tooltip" title="Like our Facebook page"><i class="fa fa-facebook fa-2x mr-4"></i></a>
+        <a href="#" target="_blank" data-toggle="tooltip" title="Like our Facebook page"><i class="fa fa-facebook fa-2x mr-4"></i></a>
         <a class="text-danger" href="#" target="_blank"><i class="fa fa-youtube fa-2x mr-4" data-toggle="tooltip" title="Subscribe to our YouTube channel"></i></a>
         <a href="#" target="_blank"><i class="fa fa-twitter fa-2x" data-toggle="tooltip" title="Follow us on Twitter"></i></a>
       </p>

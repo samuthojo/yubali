@@ -16,6 +16,17 @@
     
     <script src="/js/app.js"></script>
     
+    <script>
+      $(function() {
+        $(":text").keydown(function() {
+          $(".alert-danger").fadeOut(0);
+        });
+        $("#password").keydown(function() {
+          $(".alert-danger").fadeOut(0);
+        })
+      })
+    </script>
+  
     <style>
       .card {
         box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -26,7 +37,17 @@
   
   <body>
     
-    <div class="container d-flex align-items-center justify-content-center">
+    <div class="container d-flex flex-column align-items-center justify-content-center">
+      
+      @if ($errors->any())
+        <div class="alert alert-danger alert-dismissible" style="display: inline-block;">
+          <ul>
+            @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+            @endforeach
+          </ul>
+        </div>
+      @endif
       
       <div class="card col-md-4">
         
@@ -56,8 +77,7 @@
               <div class="form-group col-12">
                 <label style="font-weight: bold;" for="password">Password:</label>
                 <input type="password" name="password" class="form-control" 
-                  id="password"
-                  placeholder="Password">
+                  id="password" placeholder="Password">
               </div>
             </div>
             

@@ -24,11 +24,7 @@ Route::middleware('auth')->prefix('cms')->group(function () {
       'singers' => User::where('specialization','singer')->count(),
       'instrumentalists' => User::where('specialization','instrumentalist')->count(),
     ];
-    $flag = Auth::user()->roles()->first()->identifier_name;
-    $pending_count = Application::where('flag', $flag)
-                              ->where('status', 'pending')
-                              ->count();
-    return view('cms.dashboard', compact('count', 'pending_count'));
+    return view('cms.dashboard', compact('count'));
   })->name('dashboard');
   
   Route::resources([
@@ -53,12 +49,18 @@ Route::middleware('auth')->prefix('cms')->group(function () {
   Route::get('/members/list', 'MembersController@cmsIndex')->name('members.cmsIndex');
   
   Route::get('/members/{member}', 'MembersController@cmsShow')->name('members.cmsShow');
+  
+  Route::get('/members/{member}/edit', 'MembersController@edit')->name('members.edit');
+  
+  Route::patch('/members/{member}', 'MembersController@update')->name('members.update');
+  
+  Route::put('/members/{member}/picture', 'MembersController@updatePicture')->name('members.picture');
 
-  Route::get('requests/{request}', 'BookingsController@show')->name('members.request');
+  Route::get('bookings/{booking}', 'BookingsController@show')->name('members.request');
   
-  Route::patch('requests/{request}', 'BookingsController@accept')->name('members.accept');
+  Route::patch('bookings/{booking}', 'BookingsController@accept')->name('members.accept');
   
-  Route::delete('requests/{request}', 'BookingsController@decline')->name('members.decline');
+  Route::delete('bookings/{booking}', 'BookingsController@decline')->name('members.decline');
 
   Route::get('/applications', 'ApplicationsController@index')->name('applications.index');
   
@@ -73,14 +75,26 @@ Route::middleware('auth')->prefix('cms')->group(function () {
 });
 
 Route::get('/', 'LandingController@index')->name('main');
+
 Route::view('/about', 'about_us')->name('about');
+
 Route::view('/contact', 'contact_us')->name('contact');
+
+Route::post('/contact', 'LandingController@contact')->name('contact');
+
 Route::get('/apply', 'ApplicationsController@showApplicationForm')->name('applications.apply');
+
 Route::post('/apply', 'ApplicationsController@store')->name('applications.store');
+
 Route::get('/events', 'EventsController@index')->name('events.index');
+
 Route::get('/events/{event}', 'EventsController@getEvent')->name('events.event');
+
 Route::get('/members', 'MembersController@index')->name('members.index');
+
 Route::get('/members/{member}', 'MembersController@getMember')->name('members.member');
+
 Route::get('/members/{member}/book', 'BookingsController@create')->name('members.showBookingForm');
+
 Route::post('/members/{member}/book', 'BookingsController@store')->name('members.book');
 

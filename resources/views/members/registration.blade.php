@@ -7,7 +7,7 @@
   <h3>Membership Application Form</h3>
   <hr>
   
-  <form class="" action="" method="post">
+  <form enctype="multipart/form-data" action="{{route('applications.store')}}" method="post">
     @csrf
    <div class="row">
      <div class="form-group col-md-4">
@@ -63,7 +63,7 @@
      <div class="form-group col-md-4">
        <label style="font-weight: bold;" for="children_number">
         Number Of Children:</label>
-       <input type="number" name="children_number" 
+       <input type="number" name="children_number" placeholder="eg. 2"
           class="form-control" id="children_number"
         value="{{ old('children_number') }}">
      </div>
@@ -119,8 +119,13 @@
      <div class="form-group col-12">
        <label style="font-weight: bold;" for="biography">Biography:</label>
        <textarea name="biography" class="form-control" id="biography"
-        placeholder="Short Biography" 
-        rows="3"></textarea>
+        placeholder="Short Biography" rows="3"></textarea>
+     </div>
+   </div>
+   <div class="row">
+     <div class="form-group col-12">
+       <label style="font-weight: bold;" for="picture">Profile Picture:</label><br>
+       <input type="file" name="picture" id="picture" required>
      </div>
    </div>
    <button type="submit" class="btn btn-brown mb-2 float-right">Submit</button>

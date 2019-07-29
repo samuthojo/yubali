@@ -22,12 +22,8 @@ class ApplicationsController extends Controller
                               ->where('status', $status)
                               ->latest('created_at')
                               ->get();
-    $pending_count = Application::where('flag', $flag)
-                              ->where('status', 'pending')
-                              ->count();
     return view('cms.applications', [
       'applications' => $applications,
-      'pending_count' => $pending_count
     ]);
   }
   
@@ -35,7 +31,11 @@ class ApplicationsController extends Controller
   {
     $this->validate($request, Application::rules(), Application::errorMessages());
     
-    Application::create($request->all());
+    $application = Application::create($request->all());
+    
+    if ($request->hasFile('picture')) {
+      $this->updatePicture($request, $application);
+    }
     
     $message = 'Your application has been received, ' .
                 'approval process is underway, ' .
@@ -44,13 +44,25 @@ class ApplicationsController extends Controller
     return back()->with('successMessage', $message);
   }
   
+  public function updatePicture(Request $request, Application $application)
+  {
+    $this->validate($request, ['picture' => 'nullable|file|image|max:2048',]);
+    $application->clearMediaCollection('applicant_avatars');
+    $extension = $request->file('picture')->getClientOriginalExtension();
+    $fileName = uniqid() . $extension;
+    $application->addMediaFromRequest('picture')
+          ->usingFileName($fileName)->toMediaCollection('applicant_avatars');
+
+    return response([
+      'error' => false,
+      'message' => 'The Picture has been updated',
+      'application' => $application,
+    ], 200);
+  }
+  
   public function show(Application $application)
   {
-    $flag = Auth::user()->roles()->first()->identifier_name;
-    $pending_count = Application::where('flag', $flag)
-                              ->where('status', 'pending')
-                              ->count();
-    return view('cms.application', compact('application', 'pending_count'));
+    return view('cms.application', compact('application'));
   }
   
   public function approve(Application $application)

@@ -13,7 +13,7 @@
     <li class="nav-title">Applications</li>
     
     <li class="nav-item">
-      <a class="nav-link " 
+      <a class="nav-link {{ isActiveRoute('applications.index') }}" 
         href="{{route('applications.index')}}">
         <i class="nav-icon cui-note"></i> Pending <span class="badge badge-pill badge-warning">{{$pending_count}}</span>
       </a>
@@ -22,7 +22,7 @@
     <li class="nav-title">Members</li>
     
     <li class="nav-item">
-      <a class="nav-link " 
+      <a class="nav-link {{ isActiveRoute('members.cmsIndex') }}" 
         href="{{route('members.cmsIndex')}}">
         <i class="nav-icon cui-people"></i> List 
       </a>
@@ -33,16 +33,25 @@
     <li class="nav-title">Requests</li>
     
     <li class="nav-item">
-      <a class="nav-link {{ (session('status') === 'approved') ? 'active' : '' }}" 
+      <a class="nav-link {{ (request('status') === 'approved') ? 'active' : '' }}" 
         href="{{ route('members.requests', ['status' => 'approved']) }}">
         <i class="nav-icon cui-layers"></i> Approved
       </a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-link {{ (session('status') === 'pending') ? 'active' : '' }}" 
+      <a class="nav-link {{ (request('status') === 'pending') ? 'active' : '' }}" 
         href="{{ route('members.requests', ['status' => 'pending']) }}">
         <i class="nav-icon cui-note"></i> Pending <span class="badge badge-pill badge-warning">{{$pending_count}}</span>
+      </a>
+    </li>
+    
+    <li class="nav-title">Profile</li>
+    
+    <li class="nav-item">
+      <a class="nav-link {{ isActiveRoute('members.edit') }}" 
+        href="{{ route('members.edit', ['member' => Auth::user()->id]) }}">
+        <i class="nav-icon cui-user"></i> My Details
       </a>
     </li>
     @endif    

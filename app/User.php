@@ -27,6 +27,10 @@ class User extends Authenticatable implements HasMedia
     'church_name', 'church_location', 'biography',
     'password',
   ];
+  
+  protected $appends = [
+    'avatar',
+  ];
 
   /**
    * The attributes that should be hidden for arrays.
@@ -85,4 +89,12 @@ class User extends Authenticatable implements HasMedia
       'email' => 'required|email|unique:users,email,' . $id,
     ];
   }
+  
+  public function getAvatarAttribute() {
+    if($this->hasMedia('user_pictures')) {
+      return $this->getFirstMedia('user_pictures')->getFullUrl();
+    }
+    return null;
+  }
+  
 }

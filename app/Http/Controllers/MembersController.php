@@ -23,12 +23,8 @@ class MembersController extends Controller
   
   public function cmsIndex()
   {
-    $flag = Auth::user()->roles()->first()->identifier_name;
-    $pending_count = Application::where('flag', $flag)
-                              ->where('status', 'pending')
-                              ->count();
     $members = User::whereNotNull('specialization')->get();
-    return view('cms.members', compact('members', 'pending_count'));
+    return view('cms.members', compact('members'));
   }
   
   public function getMember(User $member)
@@ -40,14 +36,48 @@ class MembersController extends Controller
   
   public function cmsShow(User $member)
   {
-    $flag = Auth::user()->roles()->first()->identifier_name;
-    $pending_count = Application::where('flag', $flag)
-                              ->where('status', 'pending')
-                              ->count();
     return view('cms.member', [
       'member' => $member,
-      'pending_count' => $pending_count,
     ]);
+  }
+  
+  public function edit(User $member)
+  {
+    return view('cms.member_profile', [
+      'member' => $member,
+    ]);
+  }
+  
+  public function update(Request $request, User $member)
+  {
+    $this->validate($request, Application::rules($member->id));
+    User::where('id', $member->id)
+        ->update($request->except(['_token', '_method']));
+    return back()->with('successMessage', 'Details updated successfully');
+  }
+  
+  public function updatePicture(Request $request, User $member)
+  {
+    try {
+      $this->validate($request, ['picture' => 'nullable|file|image|max:2048',]);
+      $member->clearMediaCollection('user_pictures');
+      $extension = $request->file('picture')->getClientOriginalExtension();
+      $fileName = uniqid() . $extension;
+      $member->addMediaFromRequest('picture')
+            ->usingFileName($fileName)->toMediaCollection('user_pictures');
+      return response([
+        'error' => false,
+        'successMessage' => 'The Picture has been updated',
+        'member' => $member,
+      ], 200);
+    } catch(\Illuminate\Validation\ValidationException $e) {
+      return response([
+        'error' => true,
+        'errors' => $e->errors(),
+        'errorMessage' => $e->getMessage()
+      ], 422);
+    }
+    
   }
    
 }

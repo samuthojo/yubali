@@ -18,7 +18,7 @@
             <th>Name</th>
             <th>Specialization</th>
             <th>Denomination</th>
-            <th>Birth Date</th>
+            <th>Age</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -28,7 +28,7 @@
             <td>{{fullName($member->firstname, $member->middlename, $member->lastname)}}</td>
             <td>{{ucfirst($member->specialization)}}</td>
             <td>{{ucfirst($member->denomination)}}</td>
-            <td>{{nice_date($member->birth_date)}}</td>
+            <td>{{age($member->birthdate)}}</td>
             <td>
               <div class="btn-group">
                 <a type="button" class="btn btn-pill btn-dark"
