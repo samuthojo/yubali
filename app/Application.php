@@ -43,8 +43,10 @@ class Application extends Model implements HasMedia
       'marital_status' => 'required', 
       'children_number' => 'required|integer|min:0', 
       'physical_address' => 'required',
-      'mobile' => 'required|unique:applications|unique:users,mobile,' . $id, 
-      'email' => 'required|email|unique:applications|unique:users,email,' . $id, 
+      'mobile' => ($id) ? 'required|unique:applications|unique:users,mobile,' . $id
+                        : 'required|unique:applications|unique:users', 
+      'email' => ($id) ? 'required|email|unique:applications|unique:users,email,' . $id
+                       : 'required|email|unique:applications|unique:users', 
       'salvation_status' => 'required', 
       'denomination' => 'required',
       'church_name' => 'required', 

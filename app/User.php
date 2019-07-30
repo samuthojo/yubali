@@ -85,8 +85,8 @@ class User extends Authenticatable implements HasMedia
     return [
       'firstname' => 'required',
       'lastname' => 'required',
-      'mobile' => 'required|unique:users,mobile,' . $id,
-      'email' => 'required|email|unique:users,email,' . $id,
+      'mobile' => ($id) ? 'required|unique:users,mobile,' . $id : 'required|unique:users',
+      'email' => ($id) ? 'required|email|unique:users,email,' . $id : 'required|email|unique:users',
     ];
   }
   
