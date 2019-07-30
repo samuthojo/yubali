@@ -114,6 +114,9 @@ class ApplicationsController extends Controller
     $user->password = bcrypt(strtoupper($application->lastname));
     $user->save();
     
+    $user->copyMedia(public_path($application->getFirstMedia('applicant_avatars')->getUrl()))
+         ->toMediaCollection('user_pictures');
+         
     $application->delete();
     
     // TODO: Send success email notification to applicant
