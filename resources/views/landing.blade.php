@@ -142,7 +142,7 @@
     @if (count($singers) === 0 && count($instrumentalists) === 0)
       <div class="d-flex justify-content-center align-items-center"
         style="min-height: 500px; font-size: 20px;">
-        Members will be added soon!
+        Members will be available soon!
       </div>
     @endif
         
