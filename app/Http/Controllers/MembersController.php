@@ -57,7 +57,6 @@ class MembersController extends Controller
   
   public function update(Request $request, User $member)
   {
-    $this->validate($request, Application::rules($member->id));
     User::where('id', $member->id)
         ->update($request->except(['_token', '_method']));
     return back()->with('successMessage', 'Details updated successfully');

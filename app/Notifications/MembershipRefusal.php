@@ -49,7 +49,7 @@ class MembershipRefusal extends Notification
                     ->greeting('Hello!')
                     ->line('Applicant name: ' . $this->request->name)
                     ->line('The request for membership was denied at: ' . $this->request->flag . ' level')
-                    ->line('The comment was: ' . $this->request->comment);
+                    ->line('The comment was: ' . $this->request->comment)
                     ->line('Reason: ' . $this->request->reason);
       }
         return (new MailMessage)
