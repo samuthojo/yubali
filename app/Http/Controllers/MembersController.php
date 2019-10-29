@@ -67,24 +67,29 @@ class MembersController extends Controller
   {
     try {
       $this->validate($request, ['picture' => 'nullable|file|image|max:2048',]);
-      $member->clearMediaCollection('user_pictures');
-      $extension = $request->file('picture')->getClientOriginalExtension();
-      $fileName = uniqid() . $extension;
-      $member->addMediaFromRequest('picture')
-            ->usingFileName($fileName)->toMediaCollection('user_pictures');
+      $base_dir = 'uploads/users/profile_pictures';
+      if ($member->profile_picture) {
+        if (file_exists($base_dir. '/' . $member->profile_picture)) {
+          unlink(public_path($base_dir . '/' . $member->profile_picture));
+        }
+      }
+      $picture = $request->file('picture');
+      $fileName = uniqid() . "." . $picture->getClientOriginalExtension();
+      $picture->move($base_dir, $fileName);
+      $member->profile_picture = $fileName;
+      $member->save();
       return response([
         'error' => false,
-        'successMessage' => 'The Picture has been updated',
+        'message' => 'The Picture has been updated',
         'member' => $member,
       ], 200);
-    } catch(\Illuminate\Validation\ValidationException $e) {
+    } catch (\Illuminate\Validation\ValidationException $e) {
       return response([
         'error' => true,
         'errors' => $e->errors(),
         'errorMessage' => $e->getMessage()
       ], 422);
-    }
-    
+    }    
   }
    
 }
