@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Role;
 use Illuminate\Http\Request;
+use App\Notifications\AdminAdded;
 
 class UsersController extends Controller
 {
@@ -51,6 +52,10 @@ class UsersController extends Controller
       ]);
       $user = User::create($request->all());
       $user->roles()->attach(['role_id' => $request->role_id]);
+      
+      // Send success email notification to user
+      $user->notify(new AdminAdded($user));
+      
       return back()->with('successMessage', 'User created successfully');
     }
 

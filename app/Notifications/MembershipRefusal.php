@@ -8,12 +8,12 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Http\Request;
 
-class ContactUs extends Notification
+class MembershipRefusal extends Notification
 {
     use Queueable;
-    
-    public $request;
 
+    public $request;
+    
     /**
      * Create a new notification instance.
      *
@@ -43,14 +43,21 @@ class ContactUs extends Notification
      */
     public function toMail($notifiable)
     {
+      if ($this->request->reason) {
         return (new MailMessage)
-                  ->subject('Yubali - Someone submitted a message via contact-us page')
-                  ->greeting('Hello!')
-                  ->line('Someone contacted Yubali, please see the details below:')
-                  ->line('Name: ' . $this->request->full_name)
-                  ->line('Mobile: ' . $this->request->mobile)
-                  ->line('Email: ' . $this->request->email)
-                  ->line('Message: ' . $this->request->content);
+                    ->subject('Yubali - A request for membership was denied')
+                    ->greeting('Hello!')
+                    ->line('Applicant name: ' . $this->request->name)
+                    ->line('The request for membership was denied at: ' . $this->request->flag . ' level')
+                    ->line('The comment was: ' . $this->request->comment);
+                    ->line('Reason: ' . $this->request->reason);
+      }
+        return (new MailMessage)
+                    ->subject('Yubali - A request for membership was denied')
+                    ->greeting('Hello!')
+                    ->line('Applicant name: ' . $this->request->name)
+                    ->line('The request for membership was denied at: ' . $this->request->flag . ' level')
+                    ->line('The comment was: ' . $this->request->comment);
     }
 
     /**

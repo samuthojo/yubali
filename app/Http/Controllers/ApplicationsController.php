@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Application;
 use App\User;
+use App\Role;
 use App\Notifications\MemberAdded;
+use App\Notifications\MembershipRefusal;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Auth;
 
 class ApplicationsController extends Controller
@@ -179,18 +182,30 @@ class ApplicationsController extends Controller
     $base_dir = 'uploads/applications/basata_certificates';
     unlink(public_path($base_dir . '/' . $application->basata_certificate));
     
+    $applicant_email = $application->email;
+    $request->merge([
+      'name' => fullName($application->firstname, $application->middlename, $application->lastname),
+      'flag' => $application->flag,
+    ]);
+    
     // delete the application
     $application->delete();
     
     if ($flag === 'executive_director') {
-      // TODO: Send disapprove email notification to applicant
+      // Send disapprove email notification to applicant
+      Notification::route('mail', $applicant_email)
+                  ->notify(new MembershipRefusal($request));
       $message = 'The Application has been disapproved and the applicant has been notified!';
       return redirect()->route('applications.index')->with('successMessage', $message);
     } else {
-      // TODO: Send disapprove email notification to executive_director
-      // TODO: Send disapprove email notification to applicant
-      $headers = 'From: <samueldev7@gmail.com>' . "\r\n";
-      mail("samuthojo@gmail.com","My subject","not taken",$headers);
+      // Send disapprove email notification to applicant
+      Notification::route('mail', $applicant_email)
+                  ->notify(new MembershipRefusal($request));
+      // Send disapprove email notification to executive_director
+      $role = Role::where('identifier_name', 'executive_director')->first();
+      $director_email = $role->users()->first()->email;
+      Notification::route('mail', $director_email)
+                  ->notify(new MembershipRefusal($request));
       $message = 'The Application has been disapproved, both applicant and director have been notified!';
       return redirect()->route('applications.index')->with('successMessage', $message);
     }

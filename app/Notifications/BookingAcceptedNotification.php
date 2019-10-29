@@ -51,6 +51,7 @@ class BookingAcceptedNotification extends Notification
                 ->greeting('Hello!')
                 ->line('Your request for: ' . $member_name . ' has been accepted!')
                 ->line($gender . ' will communicate with you soon!')
+                ->line('Here is the member\'s email: '. $user->email)
                 ->line('Thank you for using our application!');
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Notification;
+use App\Notifications\ContactUs;
 
 class LandingController extends Controller
 {

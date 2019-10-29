@@ -6,22 +6,22 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use App\Booking;
+use App\User;
 
-class BookingCancelledNotification extends Notification
+class AdminAdded extends Notification
 {
     use Queueable;
     
-    public $booking;
-
+    public $user;
+    
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(Booking $booking)
+    public function __construct(User $user)
     {
-      $this->booking = $booking;
+      $this->user = $user;
     }
 
     /**
@@ -42,15 +42,17 @@ class BookingCancelledNotification extends Notification
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
-    {   
-      $user = $this->booking->user;
-      $member_name = fullName($user->firstname, $user->middlename, $user->lastname); 
+    {
+      $user = $this->user;
+      $member_name = fullName($user->firstname, $user->middlename, $user->lastname);
+      $role_name = $user->roles()->first()->name;
       return (new MailMessage)
-                ->subject('Yubali - Request Rejected')
-                ->greeting('Hello!')
-                ->line('We are sorry: ' . $member_name . ' has rejected your request.')
-                ->line('Reason: ' . $this->booking->reason)
-                ->line('Thank you for using our application!');
+                ->subject('Yubali - You were added as ' . $role_name)
+                ->greeting('Hello ' . $member_name . ',')
+                ->line('Congratulations! You were added as ' . $role_name . '!')
+                ->line('Your username is your email address. That is: ' . $user->email)
+                ->line('Your password is your last name in capital letters. That is: ' . strtoupper($user->lastname))
+                ->line('Please login and reset your password to a stronger one.');
     }
 
     /**

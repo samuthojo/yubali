@@ -49,6 +49,9 @@ class MemberAdded extends Notification
                 ->subject('Yubali - You were added as a member')
                 ->greeting('Hello ' . $member_name . ',')
                 ->line('Congratulations! You were successfully added as a member!')
+                ->line('Your username is your email address. That is: ' . $user->email)
+                ->line('Your password is your last name in capital letters. That is: ' . strtoupper($user->lastname))
+                ->line('Please login and reset your password to a stronger one.')
                 ->line('Thank you for using our application!');
     }
 

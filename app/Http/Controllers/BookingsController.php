@@ -117,16 +117,15 @@ class BookingsController extends Controller
   public function accept(Request $request, Booking $booking)
   {
     Booking::where('id', $booking->id)->update(['status' => 'approved']);
-    
-    $successMessage = 'You have successfully accepted the request';
 
     try {
-      //To dispatch the BookingAccepted event
+      // To dispatch the BookingAccepted event
       event(new BookingAccepted($booking));
     } catch (\Throwable $e) {
-      return back()->with('successMessage', $successMessage);
+      // handle
     }
     
+    $successMessage = 'You have successfully accepted the request';
     return back()->with('successMessage', $successMessage);
   }
 
@@ -139,15 +138,14 @@ class BookingsController extends Controller
     
     $booking->refresh(); // Refresh existing model with new updates   
     
-    $successMessage = 'You have successfully declined the request';
-    
     try {
-      //To dispatch the BookingCancelled event
-      event(new BookingCancelled($booking));
+      // To dispatch the BookingCancelled event
+      event(new BookingCancelled($booking)); 
     } catch (\Throwable $e) {
-      return back()->with('successMessage', $successMessage);
+      // handle
     }
     
+    $successMessage = 'You have successfully declined the request';
     return back()->with('successMessage', $successMessage);
   }
 }
