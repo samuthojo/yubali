@@ -5,14 +5,15 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\MediaLibrary\Models\Media;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use App\Role;
 use App\Booking;
 
-class User extends Authenticatable implements HasMedia
+class User extends Authenticatable
 {
-  use Notifiable, HasMediaTrait;
+  use Notifiable;
 
   /**
    * The attributes that are mass assignable.
@@ -25,11 +26,8 @@ class User extends Authenticatable implements HasMedia
     'marital_status', 'children_number', 'physical_address',
     'mobile', 'email', 'salvation_status', 'denomination',
     'church_name', 'church_location', 'biography',
-    'password',
-  ];
-  
-  protected $appends = [
-    'avatar',
+    'password', 'payment_method', 'confirmation_code',
+    'profile_picture', 'basata_certificate',
   ];
 
   /**
@@ -60,13 +58,6 @@ class User extends Authenticatable implements HasMedia
     return $this->hasMany(Booking::class);
   }
   
-  public function getImageUrlAttribute() {
-    if($this->hasMedia('user_pictures')) {
-      return $this->getFirstMedia('user_pictures')->getFullUrl();
-    }
-    return null;
-  }
-  
   // Determine if a user is a normal member
   public function isMember() {
     return $this->specialization === 'singer' || $this->specialization === 'instrumentalist';
@@ -91,9 +82,22 @@ class User extends Authenticatable implements HasMedia
   }
   
   public function getAvatarAttribute() {
-    if($this->hasMedia('user_pictures')) {
-      return $this->getFirstMedia('user_pictures')->getFullUrl();
+    if($this->profile_picture) {
+      return '/uploads/users/profile_pictures/' . $this->profile_picture;
     }
+    return null;
+  }
+  
+  // Basata certificate
+  public function getCertificateAttribute() {
+    if($this->basata_certificate) {
+      return '/uploads/users/basata_certificates/' . $this->basata_certificate;
+    }
+    return null;
+  }
+  
+  // Basata certificate thumb
+  public function getCertificateThumbAttribute() {
     return null;
   }
   

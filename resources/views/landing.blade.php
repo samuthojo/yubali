@@ -13,7 +13,7 @@
 <div class="">
   
   <div class="col-xs-12">
-    
+          
     <div id="yubali_pic" class="carousel slide" data-ride="carousel"
       data-interval="3000">
 
@@ -63,7 +63,7 @@
             <div class="card">
               <img 
                 class="card-img-top member-card-pic" 
-                src="{{$singer->image_url}}" 
+                src="{{$singer->avatar}}" 
                 alt="">
               <div class="card-body">
                 <h4 class="card-title">

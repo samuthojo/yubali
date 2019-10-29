@@ -16,11 +16,21 @@
     
     <div class="row">
       
-      <div class="col-md-2">
+      <div class="col-md-2 mb-2">
         
         <img src="{{$member->avatar}}" alt="Applicant Picture"
           class="img-circle"
-          style="width:100px; height: 100px;">
+          style="width:100px; height: 100px;"><br><br>
+        
+        <div>Basata Certificate:</div>
+        <div>
+          <a href="{{route('members.basataCertificate', ['member' => $member])}}" 
+            target="_blank">
+            <img src="{{$member->certificate_thumb}}" alt="Basata Certificate"
+              class="img-thumbnail"
+              style="width:100px; height: 100px;">
+          </a>
+        </div>
         
       </div> 
       
@@ -32,6 +42,18 @@
             <tr>
               <th>Name: </th>
               <td>{{fullName($member->firstname, $member->middlename, $member->lastname)}}</td>
+            </tr>
+            <tr>
+              <th>Payment Method Used: </th>
+              <td>
+                <strong>{{ucfirst($member->payment_method)}}</strong>
+              </td>
+            </tr>
+            <tr>
+              <th>Confirmation Code: </th>
+              <td>
+                <strong>{{ucfirst($member->confirmation_code)}}</strong>
+              </td>
             </tr>
             <tr>
               <th>Birth Date: </th>

@@ -49,6 +49,8 @@ Route::middleware('auth')->prefix('cms')->group(function () {
   Route::get('/members/list', 'MembersController@cmsIndex')->name('members.cmsIndex');
   
   Route::get('/members/{member}', 'MembersController@cmsShow')->name('members.cmsShow');
+
+  Route::get('/members/{member}/basata_certificate', 'MembersController@basataCertificate')->name('members.basataCertificate');
   
   Route::get('/members/{member}/edit', 'MembersController@edit')->name('members.edit');
   
@@ -65,6 +67,8 @@ Route::middleware('auth')->prefix('cms')->group(function () {
   Route::get('/applications', 'ApplicationsController@index')->name('applications.index');
   
   Route::get('/applications/{application}', 'ApplicationsController@show')->name('applications.show');
+  
+  Route::get('/applications/{application}/basata_certificate', 'ApplicationsController@basataCertificate')->name('applications.basataCertificate');
   
   Route::post('/applications/{application}/approve', 'ApplicationsController@approve')->name('applications.approve');
   

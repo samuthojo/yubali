@@ -34,7 +34,7 @@
          <div class="form-group col-md-4">
            <label style="font-weight: bold;" for="mname">Middle Name:</label>
            <input type="text" name="middlename" class="form-control" id="mname"
-            placeholder="eg. Gabriel" value="{{ old('middlename') }}">
+            placeholder="" value="{{ old('middlename') }}">
          </div>
          <div class="form-group col-md-4">
            <label style="font-weight: bold;" for="mname">Last Name:</label>

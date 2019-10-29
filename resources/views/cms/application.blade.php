@@ -14,7 +14,7 @@
       <button 
         class="btn btn-warning btn-cancel"
         id="{{$application->id}}">
-        Cancel
+        Reject
       </button>
       <button 
         class="btn btn-brown btn-approve"
@@ -32,7 +32,17 @@
         
         <img src="{{$application->avatar}}" alt="Applicant Picture"
           class="img-circle"
-          style="width:100px; height: 100px;">
+          style="width:100px; height: 100px;"><br><br>
+        
+        <div>Basata Certificate:</div>  
+        <div>
+          <a 
+            href="{{route('applications.basataCertificate', ['application' => $application])}}" 
+            target="_blank"
+            class="btn btn-brown">
+            View certificate
+          </a>
+        </div>
         
       </div>
       
@@ -50,6 +60,18 @@
             <tr>
               <th>Applicant Name: </th>
               <td>{{fullName($application->firstname, $application->middlename, $application->lastname)}}</td>
+            </tr>
+            <tr>
+              <th>Payment Method Used: </th>
+              <td>
+                <strong>{{ucfirst($application->payment_method)}}</strong>
+              </td>
+            </tr>
+            <tr>
+              <th>Confirmation Code: </th>
+              <td>
+                <strong>{{ucfirst($application->confirmation_code)}}</strong>
+              </td>
             </tr>
             <tr>
               <th>Birth Date: </th>

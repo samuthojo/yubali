@@ -123,6 +123,29 @@
      </div>
    </div>
    <div class="row">
+     <div class="form-group col-md-4">
+       <label style="font-weight: bold;" for="payment_method">Payment Method Used:</label><br>
+       <select name="payment_method" class="form-control" id="payment_method">
+         <option selected disabled>select</option>
+         <option value="AIRTEL MONEY">Airtel Money</option>
+         <option value="M-PESA">M-pesa</option>
+         <option value="TIGO PESA">Tigo Pesa</option>
+         <option value="T-PESA">T-Pesa</option>
+         <option value="HALO PESA">Halo Pesa</option>
+         <option value="EZY PESA">Ezy Pesa</option>
+       </select>
+     </div>
+     <div class="form-group col-md-4">
+       <label style="font-weight: bold;" for="confirmation_code">Confirmation Code:</label><br>
+       <input type="text" class="form-control" name="confirmation_code" 
+        id="confirmation_code" value="{{ old('confirmation_code') }}" required>
+     </div>
+     <div class="form-group col-md-4">
+      <label style="font-weight: bold;" for="picture">Basata Certificate:</label><br>
+      <input type="file" name="basata_certificate" id="certificate" required>
+     </div>
+   </div>
+   <div class="row">
      <div class="form-group col-12">
        <label style="font-weight: bold;" for="picture">Profile Picture:</label><br>
        <input type="file" name="picture" id="picture" required>
@@ -141,6 +164,7 @@ $(function () {
   $("#specialization").val("{{old('specialization')}}")
   $("#gender").val("{{old('gender')}}")
   $("#biography").val("{{old('biography')}}")
+  $("#payment_method").val("{{old('payment_method')}}")
 })  
 </script>
 

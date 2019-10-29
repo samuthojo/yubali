@@ -35,6 +35,10 @@
                   href="{{route('members.cmsShow', ['member'=>$member->id])}}">
                   View
                 </a>
+                <a type="button" class="btn btn-pill btn-warning btn-delete"
+                  id="{{$member->id}}">
+                  Delete
+                </a>
               </div>
             </td>
           </tr>
@@ -48,8 +52,21 @@
   
 </div>
 
+@include('cms.modals.confirmation', [
+  'method'=>'DELETE',
+  'message'=>'You are about to delete this member!'
+])
+
 <script type="text/javascript">
 $(function () {
+  $(".btn-delete").on("click", function () {
+    let user_id = $(this).attr("id")
+    $("#acceptForm").attr("action", '/cms/users/' + user_id)
+    $("#acceptRequest").modal({
+      backdrop: 'static',
+      keyboard: false
+    })
+  })
   $("#yubali-table").DataTable({
     iDisplayLength: 6,
     bLengthChange: false

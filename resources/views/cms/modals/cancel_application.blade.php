@@ -14,11 +14,22 @@
         <!-- Modal body -->
         <div class="modal-body">
           
-            <div class="form-group">
-              <label style="font-weight: bold;" for="cancelTextarea">Reason:</label>
-              <textarea class="form-control" rows="3" placeholder="Reason"
-                name="reason" id="cancelTextarea" required></textarea>
-            </div>
+          <div class="form-group">
+            <label style="font-weight: bold;" for="comment">Comment:</label>
+            <select name="comment" class="form-control" id="comment" required>
+              <option selected disabled>select</option>
+              <option value="best">Best</option>
+              <option value="good">Good</option>
+              <option value="moderate">Moderate</option>
+              <option value="bad">Bad</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label style="font-weight: bold;" for="cancelTextarea">Reason (optional):</label>
+            <textarea class="form-control" rows="3" placeholder="Reason"
+              name="reason" id="cancelTextarea"></textarea>
+          </div>
           
         </div>
 

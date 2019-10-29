@@ -41,6 +41,12 @@ class MembersController extends Controller
     ]);
   }
   
+  public function basataCertificate(User $member)
+  {
+    $path = $member->certificate;
+    return response()->file($path);
+  }
+  
   public function edit(User $member)
   {
     return view('cms.member_profile', [

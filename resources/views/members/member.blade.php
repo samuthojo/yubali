@@ -7,7 +7,7 @@
     <div class="">
       <img 
         style="width: 150px; height: 150px; border-radius: 50%;"
-        src="{{$member->image_url}}" alt="">
+        src="{{$member->avatar}}" alt="">
       <br>
       <span>{{fullName($member->firstname,$member->middlename,$member->lastname)}}</span>      
       <br>
