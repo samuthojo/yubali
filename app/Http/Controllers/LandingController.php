@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Notification;
 
 class LandingController extends Controller
 {
@@ -21,6 +22,8 @@ class LandingController extends Controller
   
   public function contact(Request $request)
   {
+    Notification::route('mail', 'samuthojo@gmail.com')
+                ->notify(new ContactUs($request));
     $successMessage = "We have received your message, we'll get back to you soon!";
     return back()->with('successMessage', $successMessage);
   }

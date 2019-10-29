@@ -11,7 +11,7 @@
       <hr>
     </h5>
     
-    <form method="post" action="">
+    <form method="post" action="{{route('contact')}}">
       @csrf
      <div class="form-group">
        <label style="font-weight: bold;" for="name">Name:</label>
