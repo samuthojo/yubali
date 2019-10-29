@@ -25,10 +25,9 @@
         <div>Basata Certificate:</div>
         <div>
           <a href="{{route('members.basataCertificate', ['member' => $member])}}" 
-            target="_blank">
-            <img src="{{$member->certificate_thumb}}" alt="Basata Certificate"
-              class="img-thumbnail"
-              style="width:100px; height: 100px;">
+            target="_blank"
+            class="btn btn-brown">
+            View certificate
           </a>
         </div>
         
