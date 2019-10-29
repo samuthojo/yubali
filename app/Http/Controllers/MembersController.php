@@ -43,7 +43,8 @@ class MembersController extends Controller
   
   public function basataCertificate(User $member)
   {
-    $path = $member->certificate;
+    $base_dir = 'uploads/users/basata_certificates';
+    $path = $base_dir . '/' . $member->basata_certificate;
     return response()->file($path);
   }
   
